@@ -9,3 +9,4 @@ D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.
 D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\refint\BookShopping.Models.dll
 D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.pdb
 D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\ref\BookShopping.Models.dll
+D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.sourcelink.json

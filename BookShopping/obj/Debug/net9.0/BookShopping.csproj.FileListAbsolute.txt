@@ -438,3 +438,4 @@ D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\BookShopping.Utility
 D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\compressed\l80i3bh4e7-evjeyiuvun.gz
 D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\BookShopping.Services.dll
 D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\BookShopping.Services.pdb
+D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.sourcelink.json

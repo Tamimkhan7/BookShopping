@@ -15,3 +15,4 @@ D:\BulkyWebTamim\BookShopping\BookShopping.Services\obj\Debug\net9.0\BookShoppin
 D:\BulkyWebTamim\BookShopping\BookShopping.Services\obj\Debug\net9.0\refint\BookShopping.Services.dll
 D:\BulkyWebTamim\BookShopping\BookShopping.Services\obj\Debug\net9.0\BookShopping.Services.pdb
 D:\BulkyWebTamim\BookShopping\BookShopping.Services\obj\Debug\net9.0\ref\BookShopping.Services.dll
+D:\BulkyWebTamim\BookShopping\BookShopping.Services\obj\Debug\net9.0\BookShopping.Services.sourcelink.json

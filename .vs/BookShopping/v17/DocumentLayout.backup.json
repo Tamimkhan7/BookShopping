@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "D:\\BulkyWebTamim\\BookShopping\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{008EF062-1958-4D74-B175-00F10D3F7076}|BookShopping.Services\\BookShopping.Services.csproj|d:\\bulkywebtamim\\bookshopping\\bookshopping.services\\icartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{008EF062-1958-4D74-B175-00F10D3F7076}|BookShopping.Services\\BookShopping.Services.csproj|solutionrelative:bookshopping.services\\icartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|d:\\bulkywebtamim\\bookshopping\\bookshopping\\views\\cart\\getusercart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|solutionrelative:bookshopping\\views\\cart\\getusercart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|d:\\bulkywebtamim\\bookshopping\\bookshopping\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|solutionrelative:bookshopping\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|d:\\bulkywebtamim\\bookshopping\\bookshopping\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|solutionrelative:bookshopping\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|d:\\bulkywebtamim\\bookshopping\\bookshopping\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|solutionrelative:bookshopping\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|d:\\bulkywebtamim\\bookshopping\\bookshopping\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|solutionrelative:bookshopping\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{008EF062-1958-4D74-B175-00F10D3F7076}|BookShopping.Services\\BookShopping.Services.csproj|d:\\bulkywebtamim\\bookshopping\\bookshopping.services\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{008EF062-1958-4D74-B175-00F10D3F7076}|BookShopping.Services\\BookShopping.Services.csproj|solutionrelative:bookshopping.services\\cartrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|d:\\bulkywebtamim\\bookshopping\\bookshopping\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|solutionrelative:bookshopping\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A0AD72A9-E4CA-4FE4-92F7-5129E880849F}|BookShopping.Models\\BookShopping.Models.csproj|d:\\bulkywebtamim\\bookshopping\\bookshopping.models\\shoppingcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A0AD72A9-E4CA-4FE4-92F7-5129E880849F}|BookShopping.Models\\BookShopping.Models.csproj|solutionrelative:bookshopping.models\\shoppingcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,54 +42,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Program.cs",
-              "RelativeDocumentMoniker": "BookShopping\\Program.cs",
-              "ToolTip": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Program.cs",
-              "RelativeToolTip": "BookShopping\\Program.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T20:11:22.14Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ICartRepository.cs",
-              "DocumentMoniker": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Services\\ICartRepository.cs",
-              "RelativeDocumentMoniker": "BookShopping.Services\\ICartRepository.cs",
-              "ToolTip": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Services\\ICartRepository.cs",
-              "RelativeToolTip": "BookShopping.Services\\ICartRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T20:09:37.724Z",
+              "Title": "GetUserCart.cshtml",
+              "DocumentMoniker": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Views\\Cart\\GetUserCart.cshtml",
+              "RelativeDocumentMoniker": "BookShopping\\Views\\Cart\\GetUserCart.cshtml",
+              "ToolTip": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Views\\Cart\\GetUserCart.cshtml",
+              "RelativeToolTip": "BookShopping\\Views\\Cart\\GetUserCart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-08T20:25:53.376Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ShoppingCart.cs",
-              "DocumentMoniker": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Models\\ShoppingCart.cs",
-              "RelativeDocumentMoniker": "BookShopping.Models\\ShoppingCart.cs",
-              "ToolTip": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Models\\ShoppingCart.cs",
-              "RelativeToolTip": "BookShopping.Models\\ShoppingCart.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T19:33:56.253Z",
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "BookShopping\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "BookShopping\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAqwEUAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-08T17:23:50.381Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "BookShopping\\Controllers\\CartController.cs",
+              "ToolTip": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Controllers\\CartController.cs",
+              "RelativeToolTip": "BookShopping\\Controllers\\CartController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T06:43:32.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "CartRepository.cs",
               "DocumentMoniker": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Services\\CartRepository.cs",
               "RelativeDocumentMoniker": "BookShopping.Services\\CartRepository.cs",
               "ToolTip": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Services\\CartRepository.cs",
               "RelativeToolTip": "BookShopping.Services\\CartRepository.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAwHsAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAADgAAAAAAAAAAAAiwGwAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-07T17:15:48.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "BookShopping\\Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "BookShopping\\Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-08T17:05:21.423Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "BookShopping\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "BookShopping\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACgAAAB7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-08T16:37:47.302Z",
               "EditorCaption": ""
             }
           ]

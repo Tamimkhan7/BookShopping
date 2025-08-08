@@ -13,3 +13,4 @@ D:\BulkyWebTamim\BookShopping\BookShopping.Data\obj\Debug\net9.0\ref\BookShoppin
 D:\BulkyWebTamim\BookShopping\BookShopping.Data\bin\Debug\net9.0\BookShopping.Models.dll
 D:\BulkyWebTamim\BookShopping\BookShopping.Data\bin\Debug\net9.0\BookShopping.Models.pdb
 D:\BulkyWebTamim\BookShopping\BookShopping.Data\obj\Debug\net9.0\BookShop.4BA43F4E.Up2Date
+D:\BulkyWebTamim\BookShopping\BookShopping.Data\obj\Debug\net9.0\BookShopping.Data.sourcelink.json

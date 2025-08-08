@@ -1,50 +1,50 @@
 ﻿@using BookShopping.Models.DTOs
-@model BookDisplayModel 
+@model BookDisplayModel
+
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="my-2">
-     <form asp-action="Index" class="row row-cols-lg-auto g-3 align-items-center">
-          <div class="col-12">
+    <form asp-action="Index" class="row row-cols-lg-auto g-3 align-items-center">
+        <div class="col-12">
             <label class="visually-hidden" for="genreId">Genres</label>
-              <select class="form-select" id="genreId" name="genreId">
-              <option selected>Genre</option>
-                @foreach(var genre in Model.Genres)
+            <select class="form-select" id="genreId" name="genreId">
+                <option value="">Genre</option>
+                @foreach (var genre in Model.Genres)
                 {
-                    <option selected="@(genre.Id == Model.GenreId)" value="@genre.Id">@genre.GenreName</option>              
+                    <option selected="@(genre.Id == Model.GenreId)" value="@genre.Id">@genre.GenreName</option>
                 }
             </select>
-          </div>
+        </div>
 
-                <div class="col-12">
-                    <label class="visually-hidden" for="strem">Search by title</label>
-                    <div class="input-group">
-                        <div class="input-group-text"></div>
-                        <input type="text" class="form-control" id="strem" value="@Model.STerm" name="strem" placeholder="Search by title">
-                    </div>
-                </div>
+        <div class="col-12">
+            <label class="visually-hidden" for="strem">Search by title</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="strem" value="@Model.STerm" name="strem" placeholder="Search by title">
+            </div>
+        </div>
 
-
-          <div class="col-12">
+        <div class="col-12">
             <button type="submit" class="btn btn-primary">Search</button>
             <a href="/Home/Index" class="btn btn-dark">Reset</a>
-          </div>
+        </div>
     </form>
 </div>
 
 <div class="w-100 d-flex flex-wrap mt-4">
-    @foreach( var book in Model.Books){
-        <div class="card mx-3 mb-4" style="width: 11rem;">
+    @foreach (var book in Model.Books)
+    {
+        <div class="card mx-3 mb-4" style="width: 17rem;">
             @if (string.IsNullOrEmpty(book.Image))
-            {
-            <img style="width:100%; height:180px" src="/Image/Image.jpg" class="card-img-top" alt="No Image Available">
-            }
-            else
             {
                 <img style="width:100%; height:180px" src="/Image/Image.jpg" class="card-img-top" alt="No Image Available">
             }
-            
+            else
+            {
+                <img style="width:100%; height:180px" src="@book.Image" class="card-img-top" alt="@book.BookName">
+            }
+
             <div class="card-body">
                 <h5 class="card-title"><b>@book.BookName</b></h5>
                 <p class="card-text">
@@ -52,10 +52,33 @@
                     <b>Author</b>: @book.AuthorName<br />
                     <b>Price</b> : @book.Price
                 </p>
-              
-                <a href="#" class="btn btn-primary">Add to cart</a>
-            </div> 
+                <button type="button" onclick="add(@book.Id)" class="btn btn-primary">Add to cart</button>
+            </div>
         </div>
     }
-</div >
- 
+</div>
+
+@section Scripts {
+    <script>
+        async function add(bookId) {
+            var usernameEl = document.getElementById("username");
+    
+            if (usernameEl == null)
+                window.location.href = "/Identity/Account/Login";
+
+            try {
+                var response = await fetch(`/Cart/AddItem?bookId=${bookId}`);
+                if (response.status == 200) {
+                    var result = await response.json();
+
+                    var cartCountEl = document.getElementById("cartCount");
+                    cartCountEl.innerHTML = result;
+
+                    window.location.href = "#cartCount";
+                }
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    </script>
+}
