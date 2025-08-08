@@ -1,0 +1,11 @@
+D:\BulkyWebTamim\BookShopping\BookShopping.Models\bin\Debug\net9.0\BookShopping.Models.deps.json
+D:\BulkyWebTamim\BookShopping\BookShopping.Models\bin\Debug\net9.0\BookShopping.Models.dll
+D:\BulkyWebTamim\BookShopping\BookShopping.Models\bin\Debug\net9.0\BookShopping.Models.pdb
+D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.AssemblyInfoInputs.cache
+D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.AssemblyInfo.cs
+D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.csproj.CoreCompileInputs.cache
+D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.dll
+D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\refint\BookShopping.Models.dll
+D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.pdb
+D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\ref\BookShopping.Models.dll

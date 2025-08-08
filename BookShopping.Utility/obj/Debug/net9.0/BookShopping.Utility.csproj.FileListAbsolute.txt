@@ -1,0 +1,12 @@
+D:\BulkyWebTamim\BookShopping\BookShopping.Utility\bin\Debug\net9.0\BookShopping.Utility.deps.json
+D:\BulkyWebTamim\BookShopping\BookShopping.Utility\bin\Debug\net9.0\BookShopping.Utility.dll
+D:\BulkyWebTamim\BookShopping\BookShopping.Utility\bin\Debug\net9.0\BookShopping.Utility.pdb
+D:\BulkyWebTamim\BookShopping\BookShopping.Utility\obj\Debug\net9.0\BookShopping.Utility.csproj.AssemblyReference.cache
+D:\BulkyWebTamim\BookShopping\BookShopping.Utility\obj\Debug\net9.0\BookShopping.Utility.GeneratedMSBuildEditorConfig.editorconfig
+D:\BulkyWebTamim\BookShopping\BookShopping.Utility\obj\Debug\net9.0\BookShopping.Utility.AssemblyInfoInputs.cache
+D:\BulkyWebTamim\BookShopping\BookShopping.Utility\obj\Debug\net9.0\BookShopping.Utility.AssemblyInfo.cs
+D:\BulkyWebTamim\BookShopping\BookShopping.Utility\obj\Debug\net9.0\BookShopping.Utility.csproj.CoreCompileInputs.cache
+D:\BulkyWebTamim\BookShopping\BookShopping.Utility\obj\Debug\net9.0\BookShopping.Utility.dll
+D:\BulkyWebTamim\BookShopping\BookShopping.Utility\obj\Debug\net9.0\refint\BookShopping.Utility.dll
+D:\BulkyWebTamim\BookShopping\BookShopping.Utility\obj\Debug\net9.0\BookShopping.Utility.pdb
+D:\BulkyWebTamim\BookShopping\BookShopping.Utility\obj\Debug\net9.0\ref\BookShopping.Utility.dll
