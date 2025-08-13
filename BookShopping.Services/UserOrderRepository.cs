@@ -32,7 +32,10 @@ namespace BookShopping.Services
 
             
             var orders = await _db.Orders
-                .Include("OrderDetail")
+                .Include(x => x.OrderStatus)
+                .Include(x => x.OrderDetail)
+                .ThenInclude(x => x.Book)
+                .ThenInclude(x => x.Genre)
                 .Where(a => a.UserId == userId)
                 .ToListAsync();
 

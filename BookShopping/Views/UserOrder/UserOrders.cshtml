@@ -1,0 +1,81 @@
+﻿@* Model specifies that this view receives a collection of Order objects *@
+@model IEnumerable<Order>
+
+<div class="mt-2" style="width:100%;">
+    <a href="/Identity/Account/Manage" class="btn btn-primary my-2">Back</a>
+    <h4>My Orders</h4>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-striped mb-4">
+            <thead>
+                <tr>
+                    <th>Order Date</th>
+                    <th>Order Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@order.CreateDate.ToString("dd-MM-yyyy")</td>
+                        <td>@order.OrderStatus.StatusName</td>
+                        <td></td>
+                    </tr>
+
+                    @if (order.OrderDetail != null && order.OrderDetail.Any())
+                    {
+                        <tr>
+                            <td colspan="3" style="padding:10px;">
+                                <table class="table table-striped mb-2">
+                                    <thead>
+                                        <tr>
+                                            <th>Book</th>
+                                            <th>Image</th>
+                                            <th>Genre</th>
+                                            <th>Unit Price (BD)</th>
+                                            <th>Total Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in order.OrderDetail)
+                                        {
+                                            <tr>
+                                                <td>@item.Book.BookName</td>
+                                                <td>
+                                                    @if (!string.IsNullOrEmpty(item.Book.Image))
+                                                    {
+                                                        <img style="width:80px; height:100px;" src="@Url.Content("~/Image/" + item.Book.Image)" alt="Book Image" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <img style="width:80px; height:100px;" src="@Url.Content("~/Image/Image.jpg")" alt="No Image Available" />
+                                                    }
+                                                </td>
+                                                <td>@item.Book.Genre.GenreName</td>
+                                                <td>@item.Book.Price x @item.Quantity</td>
+                                                <td>@(item.Book.Price * item.Quantity)</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr class="bg-danger text-dark">
+                            <td><strong>Total Price:</strong></td>
+                            <td colspan="4" style="padding:10px;">
+                                @(order.OrderDetail.Sum(d => d.Book.Price * d.Quantity))
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h5>No Orders</h5>
+    }
+</div>
