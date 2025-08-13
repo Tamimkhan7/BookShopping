@@ -1,6 +1,6 @@
-﻿using BookShopping.Services;
+﻿using BookShopping.Models.DTOs;
+using BookShopping.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookShopping.Controllers
@@ -14,7 +14,7 @@ namespace BookShopping.Controllers
             _cartRepository = cartRepository;
         }
 
-        public async Task<IActionResult> AddItem(int bookId, int qty = 1, int redirect=0)
+        public async Task<IActionResult> AddItem(int bookId, int qty = 1, int redirect = 0)
         {
             var cartCount = await _cartRepository.AddItem(bookId, qty);
             if (redirect == 0) return Ok(cartCount);
@@ -38,11 +38,28 @@ namespace BookShopping.Controllers
             int cartItem = await _cartRepository.GetCartItemCount();
             return Ok(cartItem);
         }
-        public async Task<IActionResult> Checkout()
-        { 
-            bool isCheckOut = await _cartRepository.DoCheckOut();
-            if (!isCheckOut) throw new Exception("Something happen in server side");
-            return RedirectToAction("Index", "Home");
+        public IActionResult Checkout()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Checkout(CheckoutModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+            bool isCheckedOut = await _cartRepository.DoCheckOut(model);
+            if (!isCheckedOut) return RedirectToAction(nameof(OrderFailure));
+            return RedirectToAction(nameof(OrderSuccess));
+        }
+
+        public IActionResult OrderSuccess()
+        {
+            return View();
+        }
+
+        public IActionResult OrderFailure()
+        {
+            return View();
         }
     }
 }

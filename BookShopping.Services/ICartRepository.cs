@@ -1,6 +1,5 @@
 ﻿using BookShopping.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using BookShopping.Models.DTOs;
 
 namespace BookShopping.Services
 {
@@ -10,6 +9,7 @@ namespace BookShopping.Services
         Task<int> RemoveItem(int bookId);
         Task<ShoppingCart> GetUserCart();
         Task<int> GetCartItemCount(string userId = "");
-        Task<bool> DoCheckOut();
+        //Task<ShoppingCart> GetCart(string userId);
+        Task<bool> DoCheckOut(CheckoutModel model);
     }
 }

@@ -1,8 +1,8 @@
-﻿namespace BookShopping.Utility
+﻿namespace BookShopping.Utility;
+
+public enum PaymentMethods
 {
-    public enum PaymentMethods
-    {
-        COD = 1, // Cash on Delivery
-        Online
-    }
+    COD = 1, // Cash on Delivery
+    Online
 }
+

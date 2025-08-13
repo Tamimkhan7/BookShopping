@@ -1,12 +1,9 @@
 ﻿using BookShopping.Data;
 using BookShopping.Models;
+using BookShopping.Models.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BookShopping.Services
 {
@@ -142,7 +139,7 @@ namespace BookShopping.Services
                 .FirstOrDefaultAsync(x => x.UserId == userId);
         }
 
-        public async Task<bool> DoCheckOut()
+        public async Task<bool> DoCheckOut(CheckoutModel model)
         {
             using var transaction = _db.Database.BeginTransaction();
             try
@@ -158,17 +155,27 @@ namespace BookShopping.Services
                 var cartDetails = _db.CartDetails
                     .Where(a => a.ShoppingCartId == cart.Id).ToList();
                 if (cartDetails.Count == 0) throw new InvalidOperationException("Cart is empty");
+                var pendingRecord = _db.OrderStatuses.FirstOrDefault(a => a.StatusName == "Pending");
+                if (pendingRecord is null)
+                    throw new Exception("Order status does not have pending status");
+
                 var order = new Order
                 {
                     UserId = userId,
                     CreateDate = DateTime.UtcNow,
-                    OrderStatusId = 1, // 1 for pending
+                    Name = model.Name,
+                    Email = model.Email,
+                    MobileNumber = model.MobileNumber,
+                    PaymentMethod = model.PaymentMethod,
+                    Address = model.Address,
+                    IsPaid = false,
+                    OrderStatusId = pendingRecord.Id, // 1 for pending
 
                 };
 
                 _db.Orders.Add(order);
                 _db.SaveChanges();
-                foreach(var item in cartDetails)
+                foreach (var item in cartDetails)
                 {
                     var orderDetail = new OrderDetail
                     {
@@ -190,7 +197,7 @@ namespace BookShopping.Services
             }
             catch (Exception)
             {
-               return false;
+                return false;
             }
         }
 

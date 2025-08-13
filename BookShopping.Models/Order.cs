@@ -25,6 +25,7 @@ namespace BookShopping.Models
         [Required]
         [MaxLength(30)]
         public string? PaymentMethod { get; set; }
+        public bool IsPaid { get; set; }
         public OrderStatus OrderStatus { get; set; }
         public List<OrderDetail> OrderDetail { get; set; }
     }
