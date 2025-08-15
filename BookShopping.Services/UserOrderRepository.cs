@@ -1,13 +1,9 @@
 ﻿using BookShopping.Data;
 using BookShopping.Models;
+using BookShopping.Models.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookShopping.Services
 {
@@ -23,24 +19,55 @@ namespace BookShopping.Services
             _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
         }
-        public async Task<IEnumerable<Order>> UserOrders()
+
+        public async Task ChangeOrderStatus(UpdateOrderStatusModel model)
         {
-            var userId = GetUserId();
-            if(string.IsNullOrEmpty(userId))            
-                throw new Exception("User is not Logged In");
+            var order = await _db.Orders.FindAsync(model.OrderId);
+            if (order == null)
+                throw new InvalidOperationException($"Order with in id : {model.OrderId} does not found");
+            order.OrderStatusId = model.OrderStatusId;
+            await _db.SaveChangesAsync();
 
-
-            
-            var orders = await _db.Orders
-                .Include(x => x.OrderStatus)
-                .Include(x => x.OrderDetail)
-                .ThenInclude(x => x.Book)
-                .ThenInclude(x => x.Genre)
-                .Where(a => a.UserId == userId)
-                .ToListAsync();
-
-            return orders;
         }
+
+        public async Task<Order>? GetOrderById(int id)
+        {
+            return await _db.Orders.FindAsync(id); ///find specific order by id from the database
+        }
+
+        public async Task<IEnumerable<OrderStatus>> GetOrderStatuses()
+        {
+            return await _db.OrderStatuses.ToListAsync();
+        }
+
+        public async Task TogglePaymentStatus(int orderId)
+        {
+            var order = await _db.Orders.FindAsync(orderId);
+            if (order == null) throw new InvalidOperationException($"order with in id: {orderId} does not found");
+
+            order.IsPaid = !order.IsPaid;
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Order>> UserOrders(bool getAll = false)
+        {
+            var orders = _db.Orders
+                   .Include(x => x.OrderStatus)
+                   .Include(x => x.OrderDetail)
+                   .ThenInclude(x => x.Book)
+                   .ThenInclude(x => x.Genre).AsQueryable();
+
+            if (!getAll)
+            {
+                var userId = GetUserId();
+                if (string.IsNullOrEmpty(userId))
+                    throw new Exception("User is not Logged In");
+                orders = orders.Where(x => x.UserId == userId);
+                return await orders.ToListAsync();
+            }
+            return await orders.ToListAsync();
+        }
+
         private string GetUserId()
         {
             var principal = _httpContextAccessor.HttpContext?.User;

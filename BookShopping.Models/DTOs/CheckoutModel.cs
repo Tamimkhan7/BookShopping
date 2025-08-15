@@ -2,6 +2,7 @@
 
 namespace BookShopping.Models.DTOs
 {
+    //this is data transfer object (DTO) for checkout process
     public class CheckoutModel
     {
         [Required]

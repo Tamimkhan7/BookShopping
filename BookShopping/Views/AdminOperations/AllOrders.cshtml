@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Order>
+@{
+    ViewData["Title"] = "AllOrders";
+}
+
+<div class="mt-2" style="width:100%">
+    <h4>Orders</h4>
+
+    @if (Model?.Any() == true)
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Order Date</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile No</th>
+                    <th>Address</th>
+                    <th>Payment</th>
+                    <th>Order Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@order.CreateDate.ToString("dd-MM-yyyy")</td>
+                        <td>@order.Name</td>
+                        <td>@order.Email</td>
+                        <td>@order.MobileNumber</td>
+                        <td>@order.Address</td>
+                        <td>@($"{order.PaymentMethod} | {(order.IsPaid ? "Paid" : "Not Paid")}")</td>
+                        <td>@(order.OrderStatus?.StatusName ?? "N/A")</td>
+                        <td class="d-flex gap-2">
+                           
+                            <a asp-controller="AdminOperations"
+                               asp-action="Details"
+                               asp-route-id="@order.Id"
+                               class="btn btn-primary">
+                                Order Detail
+                            </a>
+
+                            <a asp-controller="AdminOperations"
+                               asp-action="UpdateOrderStatus"
+                               asp-route-orderId="@order.Id"
+                               class="btn btn-info">
+                                Change Order Status
+                            </a>
+
+                            <a asp-controller="AdminOperations"
+                               asp-action="TogglePaymentStatus"
+                               asp-route-orderId="@order.Id"
+                               class="btn btn-secondary">
+                                Toggle Payment Status
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h5>No Orders</h5>
+    }
+</div>

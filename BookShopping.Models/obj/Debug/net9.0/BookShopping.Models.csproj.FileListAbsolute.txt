@@ -10,3 +10,4 @@ D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\refint\BookSh
 D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.pdb
 D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\ref\BookShopping.Models.dll
 D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.sourcelink.json
+D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.csproj.AssemblyReference.cache

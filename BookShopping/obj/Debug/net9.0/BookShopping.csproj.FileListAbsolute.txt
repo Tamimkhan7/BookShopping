@@ -439,3 +439,13 @@ D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\compressed\l80i3bh4e
 D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\BookShopping.Services.dll
 D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\BookShopping.Services.pdb
 D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.sourcelink.json
+D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\System.Web.Mvc.dll
+D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\System.Web.Razor.dll
+D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\System.Web.Helpers.dll
+D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\System.Web.WebPages.Deployment.dll
+D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\System.Web.WebPages.Razor.dll
+D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\System.Web.WebPages.dll
+D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\Microsoft.Web.Infrastructure.dll
+D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\Newtonsoft.Json.Bson.dll

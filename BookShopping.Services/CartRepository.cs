@@ -170,7 +170,6 @@ namespace BookShopping.Services
                     Address = model.Address,
                     IsPaid = false,
                     OrderStatusId = pendingRecord.Id, // 1 for pending
-
                 };
 
                 _db.Orders.Add(order);
