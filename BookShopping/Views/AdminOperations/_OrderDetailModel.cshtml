@@ -1,0 +1,56 @@
+﻿@using BookShopping.Models.DTOs
+@model OrderDetailsModelDTO
+
+@{
+    // label er jonno unique id, jate multiple modal thakleo conflict na hoy
+    var labelId = $"label-{Model.DivID}";
+}
+
+<div class="modal fade" id="modal-@Model.DivID" tabindex="-1" aria-labelledby="@labelId" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        @* large width ektu upokari *@
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="@labelId">Order Detail</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                @if (Model?.OrderDetail != null && Model.OrderDetail.Any())
+                {
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Book</th>
+                                <th>Genre</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.OrderDetail)
+                            {
+                                <tr>
+                                    <td>@item.Book?.BookName</td>
+                                    <td>@item.Book?.Genre?.GenreName</td>
+                                    <td>@item.UnitPrice.ToString("0.00")</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@(item.Quantity* item.UnitPrice)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="text-muted">No order items found.</div>
+                }
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>           
+            </div>
+        </div>
+    </div>
+</div>

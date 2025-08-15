@@ -1,7 +1,14 @@
-﻿namespace BookShopping.Models.DTOs;
+﻿// File: Models/DTOs/OrderDetailsModelDTO.cs
 
-public class OrderDetailsModelDTO
+// NOTE: dhore nichhi Order & OrderDetail entity gulo BookShopping.Models namespace-e ase.
+// jodi onno namespace hoy, tahole niche using line ta adjust korben.
+namespace BookShopping.Models.DTOs
 {
-    public string DivID { get; set; }
-    public IEnumerable<OrderDetail> OrderDetails { get; set; }
+    public class OrderDetailsModelDTO
+    {
+        public string DivID { get; set; } = "";
+
+        // Order-er OrderDetail list ekhane pabo
+        public IEnumerable<OrderDetail> OrderDetail { get; set; } = Enumerable.Empty<OrderDetail>();
+    }
 }

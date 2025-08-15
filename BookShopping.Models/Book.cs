@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookShopping.Models
 {
@@ -23,8 +18,9 @@ namespace BookShopping.Models
         [Required]
         public int GenreId { get; set; }
         public Genre Genre { get; set; }
-        public List<OrderDetail> OrderDetail { get; set; } 
+        public List<OrderDetail> OrderDetail { get; set; }
         public List<CartDetail> CartDetail { get; set; }
+        public Stock Stock { get; set; }
         [NotMapped]
         public string GenreName { get; set; }
     }
