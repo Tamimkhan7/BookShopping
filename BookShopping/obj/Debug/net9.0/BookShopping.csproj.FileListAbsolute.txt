@@ -418,8 +418,6 @@ D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\compressed\wkucxyucy
 D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\compressed\pzhowfeh7e-muycvpuwrr.gz
 D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\compressed\6pda26i6oc-87fc7y1x7t.gz
 D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\compressed\t9455aczvg-mlv21k5csn.gz
-D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\compressed\91oel8pr5d-8pc18ugshp.gz
-D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\compressed\3d6n3i1v9m-8pc18ugshp.gz
 D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\staticwebassets.build.json
 D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\staticwebassets.development.json
@@ -449,3 +447,6 @@ D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\Microsoft.AspNetCore
 D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\Microsoft.Web.Infrastructure.dll
 D:\BulkyWebTamim\BookShopping\BookShopping\bin\Debug\net9.0\Newtonsoft.Json.Bson.dll
+D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\scopedcss\Views\Shared\_AdminLayout.cshtml.rz.scp.css
+D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\compressed\91oel8pr5d-89s2i2d1qp.gz
+D:\BulkyWebTamim\BookShopping\BookShopping\obj\Debug\net9.0\compressed\3d6n3i1v9m-89s2i2d1qp.gz

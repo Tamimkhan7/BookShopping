@@ -62,6 +62,7 @@ D:\BulkyWebTamim\BookShopping\BookShopping\wwwroot\lib\bootstrap\dist\css\bootst
 wwwroot\css\bootstrap.min (2).css
 wwwroot\favicon.ico
 wwwroot\Image\Image.jpg
+wwwroot\images\aff8e711-8dc1-4b29-993e-b6c99a5aa802.png
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
