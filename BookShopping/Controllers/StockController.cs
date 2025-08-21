@@ -19,7 +19,7 @@ namespace BookShopping.Controllers
             var stocks = await _stockRepo.GetStocks(sTerm);
             return View(stocks);
         }
-
+        //Ei method GET request handle kore.
         public async Task<IActionResult> ManageStock(int bookId)
         {
             var existingStock = await _stockRepo.GetStockByBookId(bookId);

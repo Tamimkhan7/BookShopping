@@ -4093,7 +4093,10 @@
         },
         "runtime": {
           "bin/placeholder/BookShopping.Services.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "BookShopping.Utility/1.0.0": {
         "type": "project",

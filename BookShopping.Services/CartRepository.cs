@@ -27,7 +27,7 @@ namespace BookShopping.Services
             try
             {
                 if (string.IsNullOrEmpty(userId))
-                    throw new Exception("User is not Logged In");
+                    throw new UnauthorizedAccessException("User is not Logged In");
 
                 var cart = await GetCart(userId);
                 if (cart == null)
@@ -77,17 +77,17 @@ namespace BookShopping.Services
             try
             {
                 if (string.IsNullOrEmpty(userId))
-                    throw new Exception("User is not Logged In");
+                    throw new UnauthorizedAccessException("User is not Logged In");
 
                 var cart = await GetCart(userId);
                 if (cart == null)
-                    throw new Exception("Cart is empty");
+                    throw new InvalidOperationException("Invalid Cart");
 
                 var cartItem = await _db.CartDetails
                     .FirstOrDefaultAsync(a => a.ShoppingCartId == cart.Id && a.BookId == bookId);
 
                 if (cartItem == null)
-                    throw new Exception("Item not found in cart");
+                    throw new InvalidOperationException("Item not found in cart");
 
                 if (cartItem.Quantity > 1)
                     cartItem.Quantity -= 1;
@@ -106,14 +106,17 @@ namespace BookShopping.Services
         {
             var userId = GetUserId();
             if (string.IsNullOrEmpty(userId))
-                throw new Exception("Invalid userId");
+                throw new InvalidOperationException("Invalid userId");
 
             var shoppingCart = await _db.ShoppingCarts
-                .Include(a => a.CartDetails)
-                    .ThenInclude(a => a.Book)
-                        .ThenInclude(b => b.Genre)
-                .Where(a => a.UserId == userId)
-                .FirstOrDefaultAsync();
+                      .Include(a => a.CartDetails)
+                      .ThenInclude(a => a.Book)
+                      .ThenInclude(a => a.Stock)
+                       .Include(a => a.CartDetails)
+                      .ThenInclude(a => a.Book)
+                      .ThenInclude(b => b.Genre)
+                      .Where(a => a.UserId == userId)
+                      .FirstOrDefaultAsync();
 
             return shoppingCart;
         }
@@ -149,15 +152,17 @@ namespace BookShopping.Services
 
                 var userId = GetUserId();
                 if (string.IsNullOrEmpty(userId))
-                    throw new Exception("User is not Logged In");
+                    throw new UnauthorizedAccessException("User is not Logged In");
+
                 var cart = await GetCart(userId);
-                if (cart is null) throw new Exception("Invalid cart");
+                if (cart is null) throw new InvalidOperationException("Invalid cart");
+
                 var cartDetails = _db.CartDetails
                     .Where(a => a.ShoppingCartId == cart.Id).ToList();
                 if (cartDetails.Count == 0) throw new InvalidOperationException("Cart is empty");
                 var pendingRecord = _db.OrderStatuses.FirstOrDefault(a => a.StatusName == "Pending");
                 if (pendingRecord is null)
-                    throw new Exception("Order status does not have pending status");
+                    throw new InvalidOperationException("Order status does not have pending status");
 
                 var order = new Order
                 {
@@ -186,8 +191,20 @@ namespace BookShopping.Services
                     };
                     _db.OrderDetails.Add(orderDetail);
 
+                    // update stock here
+                    var stock = await _db.Stocks.FirstOrDefaultAsync(a => a.BookId == item.BookId);
+                    if (stock == null) throw new InvalidOperationException("Stock is null");
+
+                    if (item.Quantity > stock.Quantity)
+                        throw new InvalidOperationException($"Only {stock.Quantity} items(s) are available in the stock");
+
+
+                    //decrease the number of quantity from the stock table
+                    stock.Quantity -= item.Quantity;
                 }
-                _db.SaveChanges();
+
+
+                //_db.SaveChanges();
                 //remove the cartdetails
                 _db.CartDetails.RemoveRange(cartDetails);
                 _db.SaveChanges();

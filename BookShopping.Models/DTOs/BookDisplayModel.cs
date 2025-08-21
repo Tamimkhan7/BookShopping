@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BookShopping.Models.DTOs
+﻿namespace BookShopping.Models.DTOs
 {
     public class BookDisplayModel
     {

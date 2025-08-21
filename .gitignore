@@ -1,0 +1,42 @@
+# Visual Studio temporary files, build results, and
+# user-specific files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+out/
+Debug/
+Release/
+
+# ASP.NET specific
+wwwroot/lib/
+wwwroot/dist/
+
+# Rider / JetBrains IDE
+.idea/
+
+# Mac / Linux system files
+.DS_Store
+*.swp
+*.lock
+
+# Log files
+*.log
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+*.nuget.props
+*.nuget.targets
+
+# Entity Framework Migrations backup
+*_Backup.cs
+
+# Publish output
+publish/
