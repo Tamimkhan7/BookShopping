@@ -207,6 +207,38 @@ namespace BookShopping.Data.Migrations
                     b.ToTable("OrderStatuses");
                 });
 
+            modelBuilder.Entity("BookShopping.Models.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Comment")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("Reviews");
+                });
+
             modelBuilder.Entity("BookShopping.Models.ShoppingCart", b =>
                 {
                     b.Property<int>("Id")
@@ -507,6 +539,17 @@ namespace BookShopping.Data.Migrations
                     b.Navigation("Order");
                 });
 
+            modelBuilder.Entity("BookShopping.Models.Review", b =>
+                {
+                    b.HasOne("BookShopping.Models.Book", "Book")
+                        .WithMany("Reviews")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+                });
+
             modelBuilder.Entity("BookShopping.Models.Stock", b =>
                 {
                     b.HasOne("BookShopping.Models.Book", "Book")
@@ -574,6 +617,8 @@ namespace BookShopping.Data.Migrations
                     b.Navigation("CartDetail");
 
                     b.Navigation("OrderDetail");
+
+                    b.Navigation("Reviews");
 
                     b.Navigation("Stock")
                         .IsRequired();

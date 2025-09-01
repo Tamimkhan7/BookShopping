@@ -5,6 +5,7 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UserSecretsId>aspnet-BookShopping-d12ec392-d96f-4bd2-808e-cebcd9a3d9b2</UserSecretsId>
+		<DisableBuildCompression Condition="'$(Configuration)'=='Debug'">true</DisableBuildCompression>
 	</PropertyGroup>
 
 	<ItemGroup>

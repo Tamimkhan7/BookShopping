@@ -36,35 +36,73 @@
     @foreach (var book in Model.Books)
     {
         <div class="card mx-3 mb-4" style="width: 17rem;">
-            @if (string.IsNullOrEmpty(book.Image))
-            {
-                <img style="width:100%; height:180px" src="/Image/Image.jpg" class="card-img-top" alt="No Image Available">
-            }
-            else
-            {
-                <img style="width:100%; height:180px" src="@book.Image" class="card-img-top" alt="@book.BookName">
-            }
+            <img style="width:100%; height:180px" src="@(string.IsNullOrEmpty(book.Image) ? "/Image/Image.jpg" : book.Image)" class="card-img-top" alt="@book.BookName">
 
             <div class="card-body">
                 <h5 class="card-title"><b>@book.BookName</b></h5>
                 <p class="card-text">
                     <b>Genre</b> : @book.GenreName<br />
                     <b>Author</b>: @book.AuthorName<br />
-                    <b>Price</b> : @book.Price
+                    <b>Price</b> : $@book.Price
                 </p>
+
+                <h6>
+                    Rating:
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        if (i <= Math.Round(book.AverageRating))
+                        {
+                            <span style="color: gold;">&#9733;</span>
+                        }
+                        else
+                        {
+                            <span style="color: lightgray;">&#9733;</span>
+                        }
+                    }
+                </h6>
+
                 @if (book.Quantity > 0)
                 {
-                    <button type="button" onclick="addToCart(@book.Id)" class="btn btn-primary">Add to cart</button>
+                    <button type="button" onclick="addToCart(@book.Id)" class="btn btn-primary mt-2">Add to cart</button>
                 }
                 else
                 {
-                    <span style="border : 2px solid; padding: 6px 9px; color: red; border-radius: 5px;">Out of Stock</span>
+                    <span style="border: 2px solid; padding: 6px 9px; color: red; border-radius: 5px; display:inline-block; margin-top:8px;">Out of Stock</span>
                 }
-
             </div>
         </div>
     }
 </div>
+
+<!-- Recent Reviews Section -->
+<h3 class="text-center fw-bold mt-5">Recent Reviews</h3>
+<hr class="border border-dark border-2 opacity-100 mb-4" />
+
+@if (ViewBag.RecentReviews != null)
+{
+    <div class="row">
+        @foreach (var review in ViewBag.RecentReviews)
+        {
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <b>BookName: </b> @review.Book.BookName <br />
+                        <p class="mb-1">
+                            <b>Genre:</b> @review.Book.Genre.GenreName <br />
+                            <b>Author:</b> @review.Book.AuthorName
+                        </p>
+                        <b>Rating :- </b>⭐ @review.Rating  <br />
+                        <b>Comments :- </b>@review.Comment
+                    </div>
+                    <div class="card-footer text-muted small text-end">
+                        @review.CreateAt.ToString("dd MMM yyyy")
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
 
 @section Scripts {
     <script>

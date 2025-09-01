@@ -27,5 +27,17 @@ namespace BookShopping.Models
         [NotMapped]
         public int Quantity { get; set; }
 
+
+        public List<Review> Reviews { get; set; }
+
+        [NotMapped]
+        public double AverageRating
+        {
+            get
+            {
+                return (Reviews != null && Reviews.Count > 0) ? Reviews.Average(r => r.Rating) : 0;
+            }
+        }
+
     }
 }

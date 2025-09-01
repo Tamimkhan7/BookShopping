@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj": {}
+    "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj": {}
   },
   "projects": {
-    "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj": {
+    "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj",
+        "projectUniqueName": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj",
         "projectName": "BookShopping.Models",
-        "projectPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj",
+        "projectPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj",
         "packagesPath": "C:\\Users\\Tamim\\.nuget\\packages\\",
-        "outputPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Models\\obj\\",
+        "outputPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

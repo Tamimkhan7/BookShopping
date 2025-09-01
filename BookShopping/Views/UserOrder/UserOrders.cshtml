@@ -1,5 +1,5 @@
 ﻿@* Model specifies that this view receives a collection of Order objects *@
-@model IEnumerable<Order>
+@model IEnumerable<BookShopping.Models.Order>
 
 <div class="mt-2" style="width:100%;">
     <a href="/Identity/Account/Manage" class="btn btn-primary my-2">Back</a>
@@ -36,6 +36,7 @@
                                             <th>Genre</th>
                                             <th>Unit Price (BD)</th>
                                             <th>Total Price</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -56,6 +57,7 @@
                                                 <td>@item.Book.Genre.GenreName</td>
                                                 <td>@item.Book.Price x @item.Quantity</td>
                                                 <td>@(item.Book.Price * item.Quantity)</td>
+                                                <td> <a class="btn btn-info" asp-controller="Review" asp-action="AddReviewPage" asp-route-bookId="@item.BookId"> Review</a></td>
                                             </tr>
                                         }
                                     </tbody>

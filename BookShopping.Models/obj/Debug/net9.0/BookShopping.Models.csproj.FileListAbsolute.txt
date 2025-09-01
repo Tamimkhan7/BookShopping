@@ -11,3 +11,16 @@ D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.
 D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\ref\BookShopping.Models.dll
 D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.sourcelink.json
 D:\BulkyWebTamim\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.csproj.AssemblyReference.cache
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\bin\Debug\net9.0\BookShopping.Models.deps.json
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\bin\Debug\net9.0\BookShopping.Models.dll
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\bin\Debug\net9.0\BookShopping.Models.pdb
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.csproj.AssemblyReference.cache
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.AssemblyInfoInputs.cache
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.AssemblyInfo.cs
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.csproj.CoreCompileInputs.cache
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.sourcelink.json
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.dll
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\obj\Debug\net9.0\refint\BookShopping.Models.dll
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.pdb
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\obj\Debug\net9.0\ref\BookShopping.Models.dll

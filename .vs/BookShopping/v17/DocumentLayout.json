@@ -1,14 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\BulkyWebTamim\\BookShopping\\",
+  "WorkspaceRootPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|d:\\bulkywebtamim\\bookshopping\\bookshopping\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|solutionrelative:bookshopping\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|c:\\users\\tamim\\onedrive\\desktop\\bookshopping\\bookshopping\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|solutionrelative:bookshopping\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|d:\\bulkywebtamim\\bookshopping\\bookshopping\\views\\shared\\_adminlayout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|solutionrelative:bookshopping\\views\\shared\\_adminlayout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|c:\\users\\tamim\\onedrive\\desktop\\bookshopping\\bookshopping\\views\\review\\addreviewpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|solutionrelative:bookshopping\\views\\review\\addreviewpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|c:\\users\\tamim\\onedrive\\desktop\\bookshopping\\bookshopping\\controllers\\reviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|solutionrelative:bookshopping\\controllers\\reviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{008EF062-1958-4D74-B175-00F10D3F7076}|BookShopping.Services\\BookShopping.Services.csproj|c:\\users\\tamim\\onedrive\\desktop\\bookshopping\\bookshopping.services\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{008EF062-1958-4D74-B175-00F10D3F7076}|BookShopping.Services\\BookShopping.Services.csproj|solutionrelative:bookshopping.services\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|c:\\users\\tamim\\onedrive\\desktop\\bookshopping\\bookshopping\\views\\review\\addreview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|solutionrelative:bookshopping\\views\\review\\addreview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0AD72A9-E4CA-4FE4-92F7-5129E880849F}|BookShopping.Models\\BookShopping.Models.csproj|c:\\users\\tamim\\onedrive\\desktop\\bookshopping\\bookshopping.models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0AD72A9-E4CA-4FE4-92F7-5129E880849F}|BookShopping.Models\\BookShopping.Models.csproj|solutionrelative:bookshopping.models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|c:\\users\\tamim\\onedrive\\desktop\\bookshopping\\bookshopping\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|solutionrelative:bookshopping\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A0AD72A9-E4CA-4FE4-92F7-5129E880849F}|BookShopping.Models\\BookShopping.Models.csproj|c:\\users\\tamim\\onedrive\\desktop\\bookshopping\\bookshopping.models\\dtos\\bookreviewviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A0AD72A9-E4CA-4FE4-92F7-5129E880849F}|BookShopping.Models\\BookShopping.Models.csproj|solutionrelative:bookshopping.models\\dtos\\bookreviewviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{008EF062-1958-4D74-B175-00F10D3F7076}|BookShopping.Services\\BookShopping.Services.csproj|c:\\users\\tamim\\onedrive\\desktop\\bookshopping\\bookshopping.services\\ireviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{008EF062-1958-4D74-B175-00F10D3F7076}|BookShopping.Services\\BookShopping.Services.csproj|solutionrelative:bookshopping.services\\ireviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|c:\\users\\tamim\\onedrive\\desktop\\bookshopping\\bookshopping\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F390FC2E-B822-48AA-8A61-414795337F47}|BookShopping\\BookShopping.csproj|solutionrelative:bookshopping\\views\\shared\\_adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,29 +58,131 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_AdminLayout.cshtml.css",
-              "DocumentMoniker": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Views\\Shared\\_AdminLayout.cshtml.css",
-              "RelativeDocumentMoniker": "BookShopping\\Views\\Shared\\_AdminLayout.cshtml.css",
-              "ToolTip": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Views\\Shared\\_AdminLayout.cshtml.css",
-              "RelativeToolTip": "BookShopping\\Views\\Shared\\_AdminLayout.cshtml.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-08-21T08:55:23.382Z",
+              "DocumentIndex": 5,
+              "Title": "Review.cs",
+              "DocumentMoniker": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Models\\Review.cs",
+              "RelativeDocumentMoniker": "BookShopping.Models\\Review.cs",
+              "ToolTip": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Models\\Review.cs",
+              "RelativeToolTip": "BookShopping.Models\\Review.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-01T18:08:46.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AddReview.cshtml",
+              "DocumentMoniker": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\Views\\Review\\AddReview.cshtml",
+              "RelativeDocumentMoniker": "BookShopping\\Views\\Review\\AddReview.cshtml",
+              "ToolTip": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\Views\\Review\\AddReview.cshtml",
+              "RelativeToolTip": "BookShopping\\Views\\Review\\AddReview.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-01T16:57:52.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BookReviewViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Models\\DTOs\\BookReviewViewModel.cs",
+              "RelativeDocumentMoniker": "BookShopping.Models\\DTOs\\BookReviewViewModel.cs",
+              "ToolTip": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Models\\DTOs\\BookReviewViewModel.cs",
+              "RelativeToolTip": "BookShopping.Models\\DTOs\\BookReviewViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-01T16:45:22.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "BookShopping\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "BookShopping\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAAEwAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-01T16:34:40.437Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_AdminLayout.cshtml",
-              "DocumentMoniker": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Views\\Shared\\_AdminLayout.cshtml",
-              "RelativeDocumentMoniker": "BookShopping\\Views\\Shared\\_AdminLayout.cshtml",
-              "ToolTip": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\Views\\Shared\\_AdminLayout.cshtml",
-              "RelativeToolTip": "BookShopping\\Views\\Shared\\_AdminLayout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-21T08:55:22.594Z",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "BookShopping\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "BookShopping\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAwBoAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-31T21:19:13.006Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AddReviewPage.cshtml",
+              "DocumentMoniker": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\Views\\Review\\AddReviewPage.cshtml",
+              "RelativeDocumentMoniker": "BookShopping\\Views\\Review\\AddReviewPage.cshtml",
+              "ToolTip": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\Views\\Review\\AddReviewPage.cshtml",
+              "RelativeToolTip": "BookShopping\\Views\\Review\\AddReviewPage.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACkAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-31T21:18:38.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IReviewService.cs",
+              "DocumentMoniker": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Services\\IReviewService.cs",
+              "RelativeDocumentMoniker": "BookShopping.Services\\IReviewService.cs",
+              "ToolTip": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Services\\IReviewService.cs",
+              "RelativeToolTip": "BookShopping.Services\\IReviewService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T18:46:30.433Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ReviewService.cs",
+              "DocumentMoniker": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Services\\ReviewService.cs",
+              "RelativeDocumentMoniker": "BookShopping.Services\\ReviewService.cs",
+              "ToolTip": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Services\\ReviewService.cs",
+              "RelativeToolTip": "BookShopping.Services\\ReviewService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T18:47:56.194Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ReviewController.cs",
+              "DocumentMoniker": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\Controllers\\ReviewController.cs",
+              "RelativeDocumentMoniker": "BookShopping\\Controllers\\ReviewController.cs",
+              "ToolTip": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\Controllers\\ReviewController.cs",
+              "RelativeToolTip": "BookShopping\\Controllers\\ReviewController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAA/wD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-28T19:04:04.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_AdminLayout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeDocumentMoniker": "BookShopping\\Views\\Shared\\_AdminLayout.cshtml",
+              "ToolTip": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\Views\\Shared\\_AdminLayout.cshtml",
+              "RelativeToolTip": "BookShopping\\Views\\Shared\\_AdminLayout.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-28T18:53:53.669Z"
             }
           ]
         }

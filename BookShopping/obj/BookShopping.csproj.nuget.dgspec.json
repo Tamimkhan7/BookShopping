@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\BookShopping.csproj": {}
+    "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\BookShopping.csproj": {}
   },
   "projects": {
-    "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Data\\BookShopping.Data.csproj": {
+    "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Data\\BookShopping.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Data\\BookShopping.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Data\\BookShopping.Data.csproj",
         "projectName": "BookShopping.Data",
-        "projectPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Data\\BookShopping.Data.csproj",
+        "projectPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Data\\BookShopping.Data.csproj",
         "packagesPath": "C:\\Users\\Tamim\\.nuget\\packages\\",
-        "outputPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Data\\obj\\",
+        "outputPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj": {
-                "projectPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj"
+              "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj": {
+                "projectPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj"
               }
             }
           }
@@ -84,14 +84,14 @@
         }
       }
     },
-    "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj": {
+    "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj",
+        "projectUniqueName": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj",
         "projectName": "BookShopping.Models",
-        "projectPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj",
+        "projectPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Models\\BookShopping.Models.csproj",
         "packagesPath": "C:\\Users\\Tamim\\.nuget\\packages\\",
-        "outputPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Models\\obj\\",
+        "outputPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -160,14 +160,14 @@
         }
       }
     },
-    "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Services\\BookShopping.Services.csproj": {
+    "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Services\\BookShopping.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Services\\BookShopping.Services.csproj",
+        "projectUniqueName": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Services\\BookShopping.Services.csproj",
         "projectName": "BookShopping.Services",
-        "projectPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Services\\BookShopping.Services.csproj",
+        "projectPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Services\\BookShopping.Services.csproj",
         "packagesPath": "C:\\Users\\Tamim\\.nuget\\packages\\",
-        "outputPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Services\\obj\\",
+        "outputPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -189,8 +189,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Data\\BookShopping.Data.csproj": {
-                "projectPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Data\\BookShopping.Data.csproj"
+              "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Data\\BookShopping.Data.csproj": {
+                "projectPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Data\\BookShopping.Data.csproj"
               }
             }
           }
@@ -239,14 +239,14 @@
         }
       }
     },
-    "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Utility\\BookShopping.Utility.csproj": {
+    "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Utility\\BookShopping.Utility.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Utility\\BookShopping.Utility.csproj",
+        "projectUniqueName": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Utility\\BookShopping.Utility.csproj",
         "projectName": "BookShopping.Utility",
-        "projectPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Utility\\BookShopping.Utility.csproj",
+        "projectPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Utility\\BookShopping.Utility.csproj",
         "packagesPath": "C:\\Users\\Tamim\\.nuget\\packages\\",
-        "outputPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Utility\\obj\\",
+        "outputPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Utility\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -311,14 +311,14 @@
         }
       }
     },
-    "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\BookShopping.csproj": {
+    "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\BookShopping.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\BookShopping.csproj",
+        "projectUniqueName": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\BookShopping.csproj",
         "projectName": "BookShopping",
-        "projectPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\BookShopping.csproj",
+        "projectPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\BookShopping.csproj",
         "packagesPath": "C:\\Users\\Tamim\\.nuget\\packages\\",
-        "outputPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping\\obj\\",
+        "outputPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -340,14 +340,14 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Data\\BookShopping.Data.csproj": {
-                "projectPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Data\\BookShopping.Data.csproj"
+              "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Data\\BookShopping.Data.csproj": {
+                "projectPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Data\\BookShopping.Data.csproj"
               },
-              "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Services\\BookShopping.Services.csproj": {
-                "projectPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Services\\BookShopping.Services.csproj"
+              "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Services\\BookShopping.Services.csproj": {
+                "projectPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Services\\BookShopping.Services.csproj"
               },
-              "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Utility\\BookShopping.Utility.csproj": {
-                "projectPath": "D:\\BulkyWebTamim\\BookShopping\\BookShopping.Utility\\BookShopping.Utility.csproj"
+              "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Utility\\BookShopping.Utility.csproj": {
+                "projectPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Utility\\BookShopping.Utility.csproj"
               }
             }
           }

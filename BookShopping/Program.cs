@@ -1,4 +1,5 @@
 using BookShopping.Data;
+using BookShopping.Models;
 using BookShopping.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,7 @@ builder.Services.AddTransient<IStockRepository, StockRepository>();
 builder.Services.AddTransient<IFileService, FileService>();
 builder.Services.AddTransient<IGenreRepository, GenreRepository>();
 builder.Services.AddTransient<IBookRepository, BookRepository>();
+builder.Services.AddTransient<IReviewService, ReviewService>();
 
 var app = builder.Build();
 

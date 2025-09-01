@@ -1,0 +1,29 @@
+﻿<h3>Average Rating: ⭐ @Model.AverageRating.ToString("0.0") / 5</h3>
+
+@foreach (var review in Model.Reviews)
+{
+    <div class="border p-2 mb-2">
+        <strong>@review.UserId</strong> 
+        rated ⭐ @review.Rating
+        <p>@review.Comment</p>
+        <small>@review.CreatedAt.ToString("dd MMM yyyy")</small>
+    </div>
+}
+
+<form asp-action="AddReview" asp-controller="Review" method="post">
+    <input type="hidden" name="bookId" value="@Model.Id" />
+
+    <label>Rating:</label>
+    <select name="rating">
+        <option value="1">⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="5">⭐⭐⭐⭐⭐</option>
+    </select>
+
+    <label>Comment:</label>
+    <textarea name="comment"></textarea>
+
+    <button type="submit" class="btn btn-primary">Submit Review</button>
+</form>

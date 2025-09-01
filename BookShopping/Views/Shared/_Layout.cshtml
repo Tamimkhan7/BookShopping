@@ -26,6 +26,12 @@
                       <li class="nav-item">
                             <a class="nav-link" href="/Home/Privacy">Privacy</a>
                         </li>
+                    @* @if (User.IsInRole(Roles.User.ToString()))
+                    {
+                         <li class="nav-item">
+                            <a href="/Review/AddReview" class="nav-link"> User Review </a>
+                        </li>
+                    } *@
                   
                     @if (User.IsInRole(Roles.Admin.ToString()))
                     {
