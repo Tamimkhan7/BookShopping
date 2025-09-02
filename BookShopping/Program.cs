@@ -1,6 +1,7 @@
 using BookShopping.Data;
 using BookShopping.Models;
 using BookShopping.Services;
+using BookShoppingCartMvcUI.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +25,8 @@ builder.Services.AddTransient<IFileService, FileService>();
 builder.Services.AddTransient<IGenreRepository, GenreRepository>();
 builder.Services.AddTransient<IBookRepository, BookRepository>();
 builder.Services.AddTransient<IReviewService, ReviewService>();
+builder.Services.AddScoped<IReportService, ReportService>();
+
 
 var app = builder.Build();
 

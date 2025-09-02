@@ -1,0 +1,26 @@
+﻿@model BookShoppingCartMvcUI.Models.DTOs.TopNSoldBooksVm
+
+<h2>Top 5 Selling Books</h2>
+<p>From @Model.StartDate.ToShortDateString() to @Model.EndDate.ToShortDateString()</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Total Sold</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var (book, index) in Model.TopNSoldBooks.Select((b, i) => (b, i + 1)))
+        {
+            <tr>
+                <td>@index</td>
+                <td>@book.BookName</td>
+                <td>@book.AuthorName</td>
+                <td>@book.TotalUnitSold</td>
+            </tr>
+        }
+    </tbody>
+</table>
