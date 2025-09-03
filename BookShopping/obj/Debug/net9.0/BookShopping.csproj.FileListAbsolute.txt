@@ -777,3 +777,4 @@ C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\stati
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShop.7CA13420.Up2Date
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.genruntimeconfig.cache
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\ref\BookShopping.dll
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\bin\Debug\net9.0\System.Linq.Dynamic.Core.dll

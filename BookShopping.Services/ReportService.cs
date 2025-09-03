@@ -1,4 +1,5 @@
 ﻿using BookShopping.Data;
+using BookShopping.Utility;
 using BookShoppingCartMvcUI.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,24 +14,37 @@ namespace BookShoppingCartMvcUI.Services
             _context = context;
         }
 
-        public TopNSoldBooksVm GetTop5SoldBooks(DateTime startDate, DateTime endDate)
+        public TopNSoldBooksVm GetTopSoldBooks(DateTime startDate, DateTime endDate, int page, int pageSize)
         {
-            var topBooks = _context.OrderDetails
+            var query = _context.OrderDetails
                 .Include(od => od.Book)
                 .Include(od => od.Order)
                 .Where(od => od.Order.CreateDate >= startDate && od.Order.CreateDate <= endDate)
-                .AsEnumerable() // calculation in memory
+                .AsEnumerable()
                 .GroupBy(od => new { od.Book.BookName, od.Book.AuthorName })
                 .Select(g => new TopNSoldBookModel(
                     g.Key.BookName,
                     g.Key.AuthorName,
                     g.Sum(e => e.Quantity)
                 ))
-                .OrderByDescending(x => x.TotalUnitSold)
-                .Take(5) // top 5, but if less than 5, just take available
+                .OrderByDescending(x => x.TotalUnitSold);
+
+            var totalItems = query.Count();
+
+            var books = query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToList();
 
-            return new TopNSoldBooksVm(startDate, endDate, topBooks);
+            var pagedResult = new PagedResult<TopNSoldBookModel>
+            {
+                Data = books,
+                TotalItems = totalItems,
+                PageNumber = page,
+                PageSize = pageSize
+            };
+
+            return new TopNSoldBooksVm(startDate, endDate, pagedResult);
         }
     }
 }

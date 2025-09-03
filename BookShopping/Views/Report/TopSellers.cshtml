@@ -1,0 +1,72 @@
+﻿@model BookShoppingCartMvcUI.Models.DTOs.TopNSoldBooksVm
+
+<h2 class="text-center">Top Selling Books</h2>
+<hr class="border border-dark border-2 opacity-100 mb-4" />
+
+<form method="get" asp-action="TopSellers" class="mt-6 p-4">
+    <label>Start Date:</label>
+    <input type="date" name="startDate" value="@Model?.StartDate.ToString("yyyy-MM-dd")" />
+
+    <label class="ml-3">End Date:</label>
+    <input type="date" name="endDate" value="@Model?.EndDate.ToString("yyyy-MM-dd")" />
+
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Total Sold</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tuple in Model.PagedBooks.Data.Select((b, i) => new { Book = b, Index = i + 1 + (Model.PagedBooks.PageNumber - 1) * Model.PagedBooks.PageSize }))
+        {
+            <tr>
+                <td>@tuple.Index</td>
+                <td>@tuple.Book.BookName</td>
+                <td>@tuple.Book.AuthorName</td>
+                <td>@tuple.Book.TotalUnitSold</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@* Table er niche pagination buttons (Previous / Next) add kora hoise. *@
+@* Buttons disable hoye jabe jodi first/last page hoy. *@
+<!-- Pagination -->
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <!-- Previous Button -->
+        <li class="page-item @(Model.PagedBooks.PageNumber == 1 ? "disabled" : "")">
+            <a class="page-link"
+               href="?startDate=@Model.StartDate.ToString("yyyy-MM-dd")&endDate=@Model.EndDate.ToString("yyyy-MM-dd")&page=@(Model.PagedBooks.PageNumber - 1)&pageSize=@Model.PagedBooks.PageSize"
+               aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+
+        <!-- Page Numbers -->
+        @for (int i = 1; i <= Model.PagedBooks.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.PagedBooks.PageNumber ? "active" : "")">
+                <a class="page-link"
+                   href="?startDate=@Model.StartDate.ToString("yyyy-MM-dd")&endDate=@Model.EndDate.ToString("yyyy-MM-dd")&page=@i&pageSize=@Model.PagedBooks.PageSize">
+                    @i
+                </a>
+            </li>
+        }
+
+        <!-- Next Button -->
+        <li class="page-item @(Model.PagedBooks.PageNumber == Model.PagedBooks.TotalPages ? "disabled" : "")">
+            <a class="page-link"
+               href="?startDate=@Model.StartDate.ToString("yyyy-MM-dd")&endDate=@Model.EndDate.ToString("yyyy-MM-dd")&page=@(Model.PagedBooks.PageNumber + 1)&pageSize=@Model.PagedBooks.PageSize"
+               aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

@@ -22,11 +22,26 @@ namespace BookShopping.Controllers
             _fileService = fileService;
         }
 
-        public async Task<IActionResult> Index()
+        // Index with Pagination
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 10)
         {
-            // Get all books from the repository
-            var books = await _bookRepo.GetBooks();
-            return View(books);
+            var allBooks = await _bookRepo.GetBooks();
+            int totalItems = allBooks.Count();
+
+            var books = allBooks
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            var pagedResult = new PagedResult<Book>
+            {
+                Data = books,
+                TotalItems = totalItems,
+                PageNumber = page,
+                PageSize = pageSize
+            };
+
+            return View(pagedResult);
         }
 
         public async Task<IActionResult> AddBook()
@@ -49,8 +64,8 @@ namespace BookShopping.Controllers
                 Text = genre.GenreName,
                 Value = genre.Id.ToString()
             });
-
             bookToAdd.GenreList = genreSelectList;
+
             if (!ModelState.IsValid) return View(bookToAdd);
 
             try
@@ -104,7 +119,7 @@ namespace BookShopping.Controllers
                 TempData["errorMessage"] = $"Book with id: {id} not found";
                 return RedirectToAction(nameof(Index));
             }
-            //create a new dropdown list for genres
+
             var genreSelectList = (await _genreRepo.GetGenres()).Select(genre => new SelectListItem
             {
                 Text = genre.GenreName,
@@ -134,7 +149,6 @@ namespace BookShopping.Controllers
                 Value = genre.Id.ToString(),
                 Selected = genre.Id == bookToUpdate.GenreId
             });
-
             bookToUpdate.GenreList = genreSelectList;
 
             if (!ModelState.IsValid) return View(bookToUpdate);
@@ -189,7 +203,6 @@ namespace BookShopping.Controllers
 
         public async Task<IActionResult> DeleteBook(int id)
         {
-
             try
             {
                 var book = await _bookRepo.GetBookById(id);
@@ -198,12 +211,10 @@ namespace BookShopping.Controllers
                     TempData["errorMessage"] = $"Book with id: {id} not found";
                     return RedirectToAction(nameof(Index));
                 }
-                else
-                {
-                    await _bookRepo.DeleteBook(book);
-                    if (!string.IsNullOrWhiteSpace(book.Image))
-                        _fileService.DeleteFile(book.Image);
-                }
+
+                await _bookRepo.DeleteBook(book);
+                if (!string.IsNullOrWhiteSpace(book.Image))
+                    _fileService.DeleteFile(book.Image);
 
                 TempData["successMessage"] = "Book deleted successfully!";
                 return RedirectToAction(nameof(Index));
@@ -215,11 +226,10 @@ namespace BookShopping.Controllers
             catch (FileNotFoundException ex)
             {
                 TempData["errorMessage"] = ex.Message;
-
             }
             catch (Exception)
             {
-                TempData["errorMessage"] = "Book could not be updated!";
+                TempData["errorMessage"] = "Book could not be deleted!";
             }
             return RedirectToAction(nameof(Index));
         }

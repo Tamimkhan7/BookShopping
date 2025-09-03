@@ -24,3 +24,6 @@ C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\obj\Debug\net9.
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\obj\Debug\net9.0\refint\BookShopping.Models.dll
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShopping.Models.pdb
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\obj\Debug\net9.0\ref\BookShopping.Models.dll
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\bin\Debug\net9.0\BookShopping.Utility.dll
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\bin\Debug\net9.0\BookShopping.Utility.pdb
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Models\obj\Debug\net9.0\BookShop.2E49FA37.Up2Date

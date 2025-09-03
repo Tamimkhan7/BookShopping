@@ -1,80 +1,85 @@
-﻿@* Model specifies that this view receives a collection of Order objects *@
-@model IEnumerable<BookShopping.Models.Order>
+﻿@model BookShopping.Utility.PagedResult<BookShopping.Models.Order>
 
 <div class="mt-2" style="width:100%;">
     <a href="/Identity/Account/Manage" class="btn btn-primary my-2">Back</a>
     <h4>My Orders</h4>
 
-    @if (Model != null && Model.Any())
+    @if (Model?.Data != null && Model.Data.Any())
     {
-        <table class="table table-striped mb-4">
-            <thead>
-                <tr>
-                    <th>Order Date</th>
-                    <th>Order Status</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var order in Model)
+        @foreach (var order in Model.Data)
+        {
+            <div class="mb-4 border p-2">
+                <div class="d-flex justify-content-between">
+                    <div><strong>Order Date:</strong> @order.CreateDate.ToString("dd-MM-yyyy")</div>
+                    <div><strong>Status:</strong> @order.OrderStatus.StatusName</div>
+                </div>
+
+                @if (order.OrderDetail != null && order.OrderDetail.Any())
                 {
-                    <tr>
-                        <td>@order.CreateDate.ToString("dd-MM-yyyy")</td>
-                        <td>@order.OrderStatus.StatusName</td>
-                        <td></td>
-                    </tr>
+                    <table class="table table-striped mt-2">
+                        <thead>
+                            <tr>
+                                <th>Book</th>
+                                <th>Image</th>
+                                <th>Genre</th>
+                                <th>Unit Price (BD)</th>
+                                <th>Total Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in order.OrderDetail)
+                            {
+                                <tr>
+                                    <td>@item.Book.BookName</td>
+                                    <td>
+                                        <img style="width:80px; height:100px;" 
+                                             src="@Url.Content("~/Image/" + (string.IsNullOrEmpty(item.Book.Image) ? "Image.jpg" : item.Book.Image))" 
+                                             alt="Book Image" />
+                                    </td>
+                                    <td>@item.Book.Genre.GenreName</td>
+                                    <td>@item.Book.Price x @item.Quantity</td>
+                                    <td>@(item.Book.Price * item.Quantity)</td>
+                                    <td>
+                                        <a class="btn btn-info" asp-controller="Review" asp-action="AddReviewPage" asp-route-bookId="@item.BookId">Review</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
 
-                    @if (order.OrderDetail != null && order.OrderDetail.Any())
-                    {
-                        <tr>
-                            <td colspan="3" style="padding:10px;">
-                                <table class="table table-striped mb-2">
-                                    <thead>
-                                        <tr>
-                                            <th>Book</th>
-                                            <th>Image</th>
-                                            <th>Genre</th>
-                                            <th>Unit Price (BD)</th>
-                                            <th>Total Price</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in order.OrderDetail)
-                                        {
-                                            <tr>
-                                                <td>@item.Book.BookName</td>
-                                                <td>
-                                                    @if (!string.IsNullOrEmpty(item.Book.Image))
-                                                    {
-                                                        <img style="width:80px; height:100px;" src="@Url.Content("~/Image/" + item.Book.Image)" alt="Book Image" />
-                                                    }
-                                                    else
-                                                    {
-                                                        <img style="width:80px; height:100px;" src="@Url.Content("~/Image/Image.jpg")" alt="No Image Available" />
-                                                    }
-                                                </td>
-                                                <td>@item.Book.Genre.GenreName</td>
-                                                <td>@item.Book.Price x @item.Quantity</td>
-                                                <td>@(item.Book.Price * item.Quantity)</td>
-                                                <td> <a class="btn btn-info" asp-controller="Review" asp-action="AddReviewPage" asp-route-bookId="@item.BookId"> Review</a></td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-
-                        <tr class="bg-danger text-dark">
-                            <td><strong>Total Price:</strong></td>
-                            <td colspan="4" style="padding:10px;">
-                                @(order.OrderDetail.Sum(d => d.Book.Price * d.Quantity))
-                            </td>
-                        </tr>
-                    }
+                    <div class="text-end fw-bold bg-light p-2">
+                        Total Price: @(order.OrderDetail.Sum(d => d.Book.Price * d.Quantity))
+                    </div>
                 }
-            </tbody>
-        </table>
+            </div>
+        }
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination flex-wrap gap-1">
+
+                <li class="page-item @(Model.PageNumber == 1 ? "disabled" : "")">
+                    <a class="page-link rounded-pill" href="?page=@(Model.PageNumber - 1)&pageSize=@Model.PageSize" aria-label="Previous">
+                        &laquo; Prev
+                    </a>
+                </li>
+
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                        <a class="page-link rounded-circle" href="?page=@i&pageSize=@Model.PageSize">@i</a>
+                    </li>
+                }
+
+                <li class="page-item @(Model.PageNumber == Model.TotalPages ? "disabled" : "")">
+                    <a class="page-link rounded-pill" href="?page=@(Model.PageNumber + 1)&pageSize=@Model.PageSize" aria-label="Next">
+                        Next &raquo;
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
     }
     else
     {

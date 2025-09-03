@@ -34,3 +34,5 @@ C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Services\obj\Debug\net
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Services\obj\Debug\net9.0\refint\BookShopping.Services.dll
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Services\obj\Debug\net9.0\BookShopping.Services.pdb
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Services\obj\Debug\net9.0\ref\BookShopping.Services.dll
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Services\bin\Debug\net9.0\BookShopping.Utility.dll
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Services\bin\Debug\net9.0\BookShopping.Utility.pdb

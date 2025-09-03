@@ -12,12 +12,12 @@ namespace BookShoppingCartMvcUI.Controllers
             _reportService = reportService;
         }
 
-        public IActionResult Top5Sellers(DateTime? startDate, DateTime? endDate)
+        public IActionResult TopSellers(DateTime? startDate, DateTime? endDate, int page = 1, int pageSize = 5)
         {
-            var start = startDate ?? DateTime.Now.AddMonths(-1); // default last 1 month
+            var start = startDate ?? DateTime.Now.AddMonths(-1);
             var end = endDate ?? DateTime.Now;
 
-            var vm = _reportService.GetTop5SoldBooks(start, end);
+            var vm = _reportService.GetTopSoldBooks(start, end, page, pageSize);
             return View(vm);
         }
     }

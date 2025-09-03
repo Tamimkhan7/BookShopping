@@ -112,7 +112,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Utility\\BookShopping.Utility.csproj": {
+                "projectPath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Utility\\BookShopping.Utility.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -138,6 +142,10 @@
             "Microsoft.AspNetCore.Mvc.TagHelpers": {
               "target": "Package",
               "version": "[2.3.0, )"
+            },
+            "System.Linq.Dynamic.Core": {
+              "target": "Package",
+              "version": "[1.6.7, )"
             }
           },
           "imports": [

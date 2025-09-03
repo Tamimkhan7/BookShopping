@@ -18,10 +18,25 @@ namespace BookShopping.Controllers
         }
 
         // GET: /Genre
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 10)
         {
             var genres = await _genreRepo.GetGenres();
-            return View(genres);
+            int totalItems = genres.Count();
+
+            var pagedGenres = genres
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            var pagedResult = new PagedResult<Genre>
+            {
+                Data = pagedGenres,
+                TotalItems = totalItems,
+                PageNumber = page,
+                PageSize = pageSize
+            };
+
+            return View(pagedResult);
         }
 
         // GET: /Genre/AddGenre
@@ -62,7 +77,10 @@ namespace BookShopping.Controllers
         {
             var genre = await _genreRepo.GetGenreById(id);
             if (genre == null)
-                throw new InvalidOperationException($"Genre with id {id} not found");
+            {
+                TempData["errorMessage"] = $"Genre with id {id} not found";
+                return RedirectToAction(nameof(Index));
+            }
 
             var genreToUpdate = new GenreDTO
             {
@@ -105,7 +123,10 @@ namespace BookShopping.Controllers
         {
             var genre = await _genreRepo.GetGenreById(id);
             if (genre == null)
-                throw new InvalidOperationException($"Genre with id {id} not found");
+            {
+                TempData["errorMessage"] = $"Genre with id {id} not found";
+                return RedirectToAction(nameof(Index));
+            }
 
             await _genreRepo.DeleteGenre(genre);
             TempData["successMessage"] = "Genre deleted successfully!";

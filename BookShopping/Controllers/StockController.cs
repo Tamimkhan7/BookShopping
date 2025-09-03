@@ -14,12 +14,33 @@ namespace BookShopping.Controllers
         {
             _stockRepo = stockRepo;
         }
-        public async Task<IActionResult> Index(string sTerm = "")
+
+        // GET: /Stock
+        public async Task<IActionResult> Index(string sTerm = "", int page = 1, int pageSize = 10)
         {
+            // Get StockDisplayModel list
             var stocks = await _stockRepo.GetStocks(sTerm);
-            return View(stocks);
+            int totalItems = stocks.Count();
+
+            var pagedStocks = stocks
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            var pagedResult = new PagedResult<StockDisplayModel>
+            {
+                Data = pagedStocks,
+                TotalItems = totalItems,
+                PageNumber = page,
+                PageSize = pageSize
+            };
+
+            ViewData["SearchTerm"] = sTerm;
+
+            return View(pagedResult);
         }
-        //Ei method GET request handle kore.
+
+        // GET: /Stock/ManageStock?bookId=5
         public async Task<IActionResult> ManageStock(int bookId)
         {
             var existingStock = await _stockRepo.GetStockByBookId(bookId);
@@ -31,7 +52,9 @@ namespace BookShopping.Controllers
             return View(stock);
         }
 
+        // POST: /Stock/ManageStock
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ManageStock(StockDTO stock)
         {
             if (!ModelState.IsValid)
@@ -40,14 +63,13 @@ namespace BookShopping.Controllers
             try
             {
                 await _stockRepo.ManageStock(stock);
-                TempData["successMessage"] = "Stock is updated successfully!!";
+                TempData["successMessage"] = "Stock updated successfully!";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                TempData["errorMessage"] = "Something went wrong!!";
+                TempData["errorMessage"] = "Something went wrong!";
             }
             return RedirectToAction(nameof(Index));
-
         }
     }
 }

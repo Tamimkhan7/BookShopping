@@ -2589,6 +2589,14 @@
         }
       },
       "System.IO.Pipelines/7.0.0": {},
+      "System.Linq.Dynamic.Core/1.6.7": {
+        "runtime": {
+          "lib/net9.0/System.Linq.Dynamic.Core.dll": {
+            "assemblyVersion": "1.6.7.0",
+            "fileVersion": "1.6.7.0"
+          }
+        }
+      },
       "System.Memory/4.5.4": {},
       "System.Memory.Data/1.0.2": {
         "dependencies": {
@@ -2711,8 +2719,10 @@
       },
       "BookShopping.Models/1.0.0": {
         "dependencies": {
+          "BookShopping.Utility": "1.0.0",
           "Microsoft.AspNet.Mvc": "5.3.0",
-          "Microsoft.AspNetCore.Mvc.TagHelpers": "2.3.0"
+          "Microsoft.AspNetCore.Mvc.TagHelpers": "2.3.0",
+          "System.Linq.Dynamic.Core": "1.6.7"
         },
         "runtime": {
           "BookShopping.Models.dll": {
@@ -4151,6 +4161,13 @@
       "sha512": "sha512-jRn6JYnNPW6xgQazROBLSfpdoczRw694vO5kKvMcNnpXuolEixUyw6IBuBs2Y2mlSX/LdLvyyWmfXhaI3ND1Yg==",
       "path": "system.io.pipelines/7.0.0",
       "hashPath": "system.io.pipelines.7.0.0.nupkg.sha512"
+    },
+    "System.Linq.Dynamic.Core/1.6.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lH+YgtovXbxD6JImHl2VXUtXRUvN8BMEZB2ReZNvS+J5GnGGZV9ivxslQ2nJWmKlBjFTReAKsevnQKE4yLP2pA==",
+      "path": "system.linq.dynamic.core/1.6.7",
+      "hashPath": "system.linq.dynamic.core.1.6.7.nupkg.sha512"
     },
     "System.Memory/4.5.4": {
       "type": "package",

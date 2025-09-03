@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "efM8MKJeJx0=",
+  "dgSpecHash": "x5dh+RsIWoE=",
   "success": true,
   "projectFilePath": "C:\\Users\\Tamim\\OneDrive\\Desktop\\BookShopping\\BookShopping.Data\\BookShopping.Data.csproj",
   "expectedPackageFiles": [
@@ -137,6 +137,7 @@
     "C:\\Users\\Tamim\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\Tamim\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Tamim\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
+    "C:\\Users\\Tamim\\.nuget\\packages\\system.linq.dynamic.core\\1.6.7\\system.linq.dynamic.core.1.6.7.nupkg.sha512",
     "C:\\Users\\Tamim\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\Tamim\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\Tamim\\.nuget\\packages\\system.memory.data\\1.0.2\\system.memory.data.1.0.2.nupkg.sha512",
