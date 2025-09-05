@@ -6,5 +6,6 @@ namespace BookShopping.Services
     {
         Task<IEnumerable<Book>> GetBooks(string strem, int genreId);
         Task<IEnumerable<Genre>> Genres();
+        Task<Book?> GetBookByIdAsync(int id);
     }
 }

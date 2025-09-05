@@ -1,6 +1,7 @@
 ﻿using BookShopping.Models;
 using BookShopping.Models.DTOs;
 using BookShopping.Services;
+using BookShopping.Utility;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -22,30 +23,45 @@ namespace BookShopping.Controllers
             _reviewService = reviewService;
         }
 
-        public async Task<IActionResult> Index(string strem = "", int genreId = 0)
+        public async Task<IActionResult> Index(string strem = "", int genreId = 0, int page = 1, int pageSize = 12)
         {
-            var books = await _homeRepository.GetBooks(strem, genreId);
-            var genres = await _homeRepository.Genres();
+            var allBooks = await _homeRepository.GetBooks(strem, genreId);
 
-            // Load Reviews for each book, AverageRating calculated automatically
-            foreach (var book in books)
+            // Load Reviews for each book
+            foreach (var book in allBooks)
             {
                 book.Reviews = await _reviewService.GetReviewsByBookIdAsync(book.Id);
             }
 
-            // Recent Reviews
-            var recentReviews = await _reviewService.GetRecentReviewsAsync();
-            ViewBag.RecentReviews = recentReviews;
+            var pagedResult = new PagedResult<Book>
+            {
+                Data = allBooks.Skip((page - 1) * pageSize).Take(pageSize).ToList(),
+                TotalItems = allBooks.Count(),
+                PageNumber = page,
+                PageSize = pageSize
+            };
 
             var bookModel = new BookDisplayModel
             {
-                Books = books,
-                Genres = genres,
+                PagedBooks = pagedResult,
+                Genres = await _homeRepository.Genres(),
                 STerm = strem,
                 GenreId = genreId
             };
 
+            // Recent Reviews
+            ViewBag.RecentReviews = await _reviewService.GetRecentReviewsAsync();
+
             return View(bookModel);
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var book = await _homeRepository.GetBookByIdAsync(id);
+            if (book == null) return NotFound();
+
+            book.Reviews = await _reviewService.GetReviewsByBookIdAsync(book.Id);
+            return View(book);
         }
 
         public IActionResult Privacy() => View();

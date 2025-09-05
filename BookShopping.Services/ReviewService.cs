@@ -32,6 +32,7 @@ namespace BookShopping.Models
         public async Task<List<Review>> GetReviewsByBookIdAsync(int bookId)
         {
             return await _context.Reviews
+                .Include(r => r.User)
                 .Where(r => r.BookId == bookId)
                 .OrderByDescending(r => r.CreateAt)
                 .ToListAsync();

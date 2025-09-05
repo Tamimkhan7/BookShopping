@@ -33,7 +33,7 @@
 </div>
 
 <div class="w-100 d-flex flex-wrap mt-4">
-    @foreach (var book in Model.Books)
+    @foreach (var book in Model.PagedBooks.Data)
     {
         <div class="card mx-3 mb-4" style="width: 17rem;">
             <img style="width:100%; height:180px" src="@(string.IsNullOrEmpty(book.Image) ? "/Image/Image.jpg" : book.Image)" class="card-img-top" alt="@book.BookName">
@@ -67,59 +67,51 @@
                 }
                 else
                 {
-                    <span style="border: 2px solid; padding: 6px 9px; color: red; border-radius: 5px; display:inline-block; margin-top:8px;">Out of Stock</span>
+                    <span class="border border-danger rounded px-2 py-1 text-danger d-inline-block mt-2">Out of Stock</span>
                 }
+
+                <a asp-action="Details" asp-route-id="@book.Id"
+                   class="btn btn-secondary @(book.Quantity > 0 ? "mt-2" : "")">
+                    View Details
+                </a>
             </div>
         </div>
     }
 </div>
 
-<!-- Recent Reviews Section -->
-<h3 class="text-center fw-bold mt-5">Recent Reviews</h3>
-<hr class="border border-dark border-2 opacity-100 mb-4" />
+<!-- Pagination -->
+<nav aria-label="Page navigation">
+    <ul class="pagination flex-wrap gap-1">
+        <li class="page-item @(Model.PagedBooks.PageNumber == 1 ? "disabled" : "")">
+            <a class="page-link" href="?page=@(Model.PagedBooks.PageNumber - 1)&pageSize=@Model.PagedBooks.PageSize&strem=@Model.STerm&genreId=@Model.GenreId">Prev</a>
+        </li>
 
-@if (ViewBag.RecentReviews != null)
-{
-    <div class="row">
-        @foreach (var review in ViewBag.RecentReviews)
+        @for (int i = 1; i <= Model.PagedBooks.TotalPages; i++)
         {
-            <div class="col-md-6 col-lg-4 mb-3">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <b>BookName: </b> @review.Book.BookName <br />
-                        <p class="mb-1">
-                            <b>Genre:</b> @review.Book.Genre.GenreName <br />
-                            <b>Author:</b> @review.Book.AuthorName
-                        </p>
-                        <b>Rating :- </b>⭐ @review.Rating  <br />
-                        <b>Comments :- </b>@review.Comment
-                    </div>
-                    <div class="card-footer text-muted small text-end">
-                        @review.CreateAt.ToString("dd MMM yyyy")
-                    </div>
-                </div>
-            </div>
+            <li class="page-item @(i == Model.PagedBooks.PageNumber ? "active" : "")">
+                <a class="page-link" href="?page=@i&pageSize=@Model.PagedBooks.PageSize&strem=@Model.STerm&genreId=@Model.GenreId">@i</a>
+            </li>
         }
-    </div>
-}
+
+        <li class="page-item @(Model.PagedBooks.PageNumber == Model.PagedBooks.TotalPages ? "disabled" : "")">
+            <a class="page-link" href="?page=@(Model.PagedBooks.PageNumber + 1)&pageSize=@Model.PagedBooks.PageSize&strem=@Model.STerm&genreId=@Model.GenreId">Next</a>
+        </li>
+    </ul>
+</nav>
+
 
 
 @section Scripts {
     <script>
         async function addToCart(bookId) {
             var usernameEl = document.getElementById("username");
-
-            if (usernameEl == null)
-                window.location.href = "/Identity/Account/Login";
+            if (!usernameEl) window.location.href = "/Identity/Account/Login";
 
             try {
                 var response = await fetch(`/Cart/AddItem?bookId=${bookId}`);
-                if (response.status == 200) {
+                if (response.status === 200) {
                     var result = await response.json();
-
-                    var cartCountEl = document.getElementById("cartCount");
-                    cartCountEl.innerHTML = result;
-
+                    document.getElementById("cartCount").innerHTML = result;
                     window.location.href = "#cartCount";
                 }
             } catch (err) {
@@ -128,3 +120,18 @@
         }
     </script>
 }
+
+@* <!-- Footer -->
+<footer class="bg-dark text-white mt-8 p-4 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-2 mb-md-0">
+                <p class="mb-0">&copy; @DateTime.Now.Year BookShopping. All rights reserved.</p>
+            </div>
+            <div class="col-md-6">
+                <a href="/Home/Privacy" class="text-white me-3">Privacy Policy</a>
+                <a href="/Home/Contact" class="text-white">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</footer> *@

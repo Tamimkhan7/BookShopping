@@ -1,0 +1,89 @@
+﻿@model BookShopping.Models.Book
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@(string.IsNullOrEmpty(Model.Image) ? "/Image/Image.jpg" : "/Image/Image.jpg")"
+                 class="img-fluid rounded" alt="@Model.BookName" />
+        </div>
+        <div class="col-md-8">
+            <h2>@Model.BookName</h2>
+            <p><strong>Author Name: </strong> @Model.AuthorName</p>
+            <p><strong>Genre: </strong> @Model.Genre?.GenreName</p>
+            <p><strong>Price: </strong> $@Model.Price</p>
+
+            <h5>Rating : </h5>
+            @for (int i = 1; i <= 5; i++)
+            {
+                if (i <= Math.Round(Model.AverageRating))
+                {
+                    <span style="color: gold;">&#9733;</span>
+                }
+                else
+                {
+                    <span style="color: lightgray;">&#9733;</span>
+                }
+            }
+            <br>
+            @if (Model.Quantity > 0)
+            {
+                <button type="button" onclick="addToCart(@Model.Id)" class="btn btn-primary mt-2">Add to cart</button>
+            }
+            else
+            {
+                <span style="border: 2px solid; padding: 6px 9px; color: red; border-radius: 5px; display:inline-block; margin-top:8px;">Out of Stock</span>
+            }
+        </div>
+    </div>
+
+    <hr />
+
+    <h4>Reviews</h4>
+    @if (Model.Reviews != null && Model.Reviews.Any())
+    {
+        foreach (var review in Model.Reviews)
+        {
+            <div class="border rounded p-2 mb-2">
+                <i class="bi bi-star-fill"></i>  <strong>⭐ @review.Rating</strong><br />
+                <i class="bi bi-person-circle"></i>  <b>@review.User.UserName</b><br />
+                <i class="bi bi-chat-dots"></i> <em>@review.Comment</em><br />
+                <i class="bi bi-calendar3"></i> <small class="text-muted">@review.CreateAt.ToString("dd MMM yyyy")</small>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No reviews yet.</p>
+    }
+</div>
+
+
+
+@section Scripts {
+    <script>
+        async function addToCart(bookId) {
+            var usernameEl = document.getElementById("username");
+
+            if (usernameEl == null)
+                window.location.href = "/Identity/Account/Login";
+
+            try {
+                var response = await fetch(`/Cart/AddItem?bookId=${bookId}`);
+                if (response.status == 200) {
+                    var result = await response.json();
+
+                    var cartCountEl = document.getElementById("cartCount");
+                    cartCountEl.innerHTML = result;
+
+                    window.location.href = "#cartCount";
+                }
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    </script>
+}

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookShopping.Models
 {
@@ -16,6 +17,7 @@ namespace BookShopping.Models
         public DateTime CreateAt { get; set; } = DateTime.UtcNow;
 
         public Book Book { get; set; }
+        public IdentityUser User { get; set; }
 
     }
 }

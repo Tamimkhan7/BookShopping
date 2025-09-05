@@ -51,5 +51,17 @@ namespace BookShopping.Services
 
             return await booksQuery.ToListAsync();
         }
+
+        public async Task<Book?> GetBookByIdAsync(int id)
+        {
+            var book = await _db.Books
+                 .Include(b => b.Genre)
+                 .Include(b => b.Reviews)
+                 .Include(b => b.Stock) //stock for quantity
+                 .FirstOrDefaultAsync(b => b.Id == id);
+
+            if (book != null && book.Stock != null) book.Quantity = book.Stock.Quantity;
+            return book;
+        }
     }
 }
