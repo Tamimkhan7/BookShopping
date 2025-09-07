@@ -27,7 +27,6 @@ namespace BookShopping.Controllers
         {
             var allBooks = await _homeRepository.GetBooks(strem, genreId);
 
-            // Load Reviews for each book
             foreach (var book in allBooks)
             {
                 book.Reviews = await _reviewService.GetReviewsByBookIdAsync(book.Id);
@@ -49,7 +48,6 @@ namespace BookShopping.Controllers
                 GenreId = genreId
             };
 
-            // Recent Reviews
             ViewBag.RecentReviews = await _reviewService.GetRecentReviewsAsync();
 
             return View(bookModel);
@@ -61,6 +59,10 @@ namespace BookShopping.Controllers
             if (book == null) return NotFound();
 
             book.Reviews = await _reviewService.GetReviewsByBookIdAsync(book.Id);
+
+            var relatedBooks = await _homeRepository.GetRelatedBooksAsync(book.Id, book.GenreId, 5);
+            ViewBag.RelatedBooks = relatedBooks;
+
             return View(book);
         }
 

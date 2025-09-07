@@ -1,84 +1,121 @@
 ﻿@model BookShopping.Models.Book
-
 @{
     ViewData["Title"] = "Book Details";
+    var relatedBooks = ViewBag.RelatedBooks as List<BookShopping.Models.Book>;
 }
 
 <div class="container mt-4">
     <div class="row">
-        <div class="col-md-4">
-            <img src="@(string.IsNullOrEmpty(Model.Image) ? "/Image/Image.jpg" : "/Image/Image.jpg")"
-                 class="img-fluid rounded" alt="@Model.BookName" />
-        </div>
-        <div class="col-md-8">
-            <h2>@Model.BookName</h2>
-            <p><strong>Author Name: </strong> @Model.AuthorName</p>
-            <p><strong>Genre: </strong> @Model.Genre?.GenreName</p>
-            <p><strong>Price: </strong> $@Model.Price</p>
+        <!-- Main Book Details (Left) -->
+        <div class="col-lg-8 col-md-12">
+            <div class="card mb-4 shadow-sm">
+                <div class="row g-0">
+                    <div class="col-md-5">
+                        <img src="@(string.IsNullOrEmpty(Model.Image) ? "/Image/Image.jpg" : Model.Image)" class="img-fluid rounded-start" alt="@Model.BookName" />
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <h2 class="card-title">@Model.BookName</h2>
+                            <p><strong>Author:</strong> @Model.AuthorName</p>
+                            <p><strong>Genre:</strong> @Model.Genre?.GenreName</p>
+                            <p><strong>Price:</strong> $@Model.Price</p>
 
-            <h5>Rating : </h5>
-            @for (int i = 1; i <= 5; i++)
+                            <div class="mb-2">
+                                <strong>Rating:</strong>
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    if (i <= Math.Round(Model.AverageRating))
+                                    {
+                                        <span style="color: gold;">&#9733;</span>
+                                    }
+                                    else
+                                    {
+                                        <span style="color: lightgray;">&#9733;</span>
+                                    }
+                                }
+                            </div>
+
+                            @if (Model.Quantity > 0)
+                            {
+                                <button type="button" onclick="addToCart(@Model.Id)" class="btn btn-primary">Add to Cart</button>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Out of Stock</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews Section -->
+            <h4>Reviews</h4>
+            @if (Model.Reviews != null && Model.Reviews.Any())
             {
-                if (i <= Math.Round(Model.AverageRating))
+                foreach (var review in Model.Reviews)
                 {
-                    <span style="color: gold;">&#9733;</span>
+                    <div class="border rounded p-3 mb-2 shadow-sm">
+                        <div class="d-flex justify-content-between">
+                            <strong>⭐ @review.Rating</strong>
+                            <small class="text-muted">@review.CreateAt.ToString("dd MMM yyyy")</small>
+                        </div>
+                        <b>@review.User.UserName</b>
+                        <p class="mb-0"><em>@review.Comment</em></p>
+                    </div>
                 }
-                else
-                {
-                    <span style="color: lightgray;">&#9733;</span>
-                }
-            }
-            <br>
-            @if (Model.Quantity > 0)
-            {
-                <button type="button" onclick="addToCart(@Model.Id)" class="btn btn-primary mt-2">Add to cart</button>
             }
             else
             {
-                <span style="border: 2px solid; padding: 6px 9px; color: red; border-radius: 5px; display:inline-block; margin-top:8px;">Out of Stock</span>
+                <p>No reviews yet.</p>
             }
         </div>
-    </div>
 
-    <hr />
+        <!-- Related Books (Right) -->
+        @* ai part buja lagbe  *@
+        <div class="col-lg-4 col-md-12">
+            <h4 class="mb-3">Related Books</h4>
+            @if (relatedBooks != null && relatedBooks.Any())
+            {
+                foreach (var rb in relatedBooks)
+                {
+                    <div class="card mb-3 shadow-sm" style="font-size: 0.9rem;">
+                        <div class="d-flex align-items-center p-2">
+                            <img src="@(string.IsNullOrEmpty(rb.Image) ? "/Image/Image.jpg" : rb.Image)"
+                                 alt="@rb.BookName"
+                                 style="height: 120px; width: 90px; object-fit: cover; border-radius: 4px;" />
+                            <div class="card-body p-2 ms-2 flex-grow-1">
+                                <h6 class="card-title mb-1" style="font-size: 0.95rem;">@rb.BookName</h6>
+                                <p class="card-text mb-2" style="font-size: 0.85rem; color: #555;">@rb.AuthorName</p>
 
-    <h4>Reviews</h4>
-    @if (Model.Reviews != null && Model.Reviews.Any())
-    {
-        foreach (var review in Model.Reviews)
-        {
-            <div class="border rounded p-2 mb-2">
-                <i class="bi bi-star-fill"></i>  <strong>⭐ @review.Rating</strong><br />
-                <i class="bi bi-person-circle"></i>  <b>@review.User.UserName</b><br />
-                <i class="bi bi-chat-dots"></i> <em>@review.Comment</em><br />
-                <i class="bi bi-calendar3"></i> <small class="text-muted">@review.CreateAt.ToString("dd MMM yyyy")</small>
-            </div>
-        }
-    }
-    else
-    {
-        <p>No reviews yet.</p>
-    }
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" class="btn btn-sm btn-success" onclick="addToCart(@rb.Id)">Add to Cart</button>
+                                    <a asp-controller="Home" asp-action="Details" asp-route-id="@rb.Id"
+                                       class="btn btn-sm btn-info">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No related books found.</p>
+            }
+        </div>
+
 </div>
-
-
 
 @section Scripts {
     <script>
         async function addToCart(bookId) {
             var usernameEl = document.getElementById("username");
-
-            if (usernameEl == null)
-                window.location.href = "/Identity/Account/Login";
+            if (usernameEl == null) window.location.href = "/Identity/Account/Login";
 
             try {
                 var response = await fetch(`/Cart/AddItem?bookId=${bookId}`);
                 if (response.status == 200) {
                     var result = await response.json();
-
-                    var cartCountEl = document.getElementById("cartCount");
-                    cartCountEl.innerHTML = result;
-
+                    document.getElementById("cartCount").innerHTML = result;
                     window.location.href = "#cartCount";
                 }
             } catch (err) {

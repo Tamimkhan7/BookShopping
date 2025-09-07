@@ -1,4 +1,5 @@
-﻿using BookShopping.Models.DTOs;
+﻿using BookShopping.Models;
+using BookShopping.Models.DTOs;
 using BookShopping.Services;
 using BookShopping.Utility;
 using Microsoft.AspNetCore.Authorization;
@@ -16,10 +17,18 @@ public class AdminOperationsController : Controller
         _userOrderRepository = userOrderRepository;
     }
 
-    public async Task<IActionResult> AllOrders()
+    public async Task<IActionResult> AllOrders(int page = 1, int pageSize = 10)
     {
         var orders = await _userOrderRepository.UserOrders(true);
-        return View(orders);
+
+        var result = new PagedResult<Order>
+        {
+            TotalItems = orders.Count(),
+            PageNumber = page,
+            PageSize = pageSize,
+            Data = orders.Skip((page - 1) * pageSize).Take(pageSize).ToList()
+        };
+        return View(result);
     }
 
     public async Task<IActionResult> TogglePaymentStatus(int orderId)
@@ -35,6 +44,7 @@ public class AdminOperationsController : Controller
         return RedirectToAction(nameof(AllOrders));
     }
 
+    //orderid diye order status update korteci karon,,aita just admin korte parbe
     public async Task<IActionResult> UpdateOrderStatus(int orderId)
     {
         var order = await _userOrderRepository.GetOrderById(orderId);
@@ -87,6 +97,7 @@ public class AdminOperationsController : Controller
             TempData["msg"] = "Something went wrong";
         }
         return RedirectToAction(nameof(UpdateOrderStatus), new { orderId = data.OrderId });
+        //return RedirectToAction(nameof(AllOrders));
     }
     public IActionResult Dashboard()
     {

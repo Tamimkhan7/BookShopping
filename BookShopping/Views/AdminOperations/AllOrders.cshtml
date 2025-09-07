@@ -1,5 +1,6 @@
 ﻿@using BookShopping.Models.DTOs
-@model IEnumerable<Order>
+@using BookShopping.Utility
+@model PagedResult<Order>
 
 @{
     Layout = "_AdminLayout";
@@ -9,7 +10,7 @@
 <div class="mt-2" style="width:100%">
     <h4>Orders</h4>
 
-    @if (Model?.Any() == true)
+    @if (Model?.Data?.Any() == true)
     {
         <table class="table table-striped">
             <thead>
@@ -25,7 +26,7 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach (var order in Model)
+            @foreach (var order in Model.Data)
             {
                 <tr>
                     <td>@order.CreateDate.ToString("dd-MM-yyyy")</td>
@@ -35,9 +36,7 @@
                     <td>@order.Address</td>
                     <td>@($"{order.PaymentMethod} | {(order.IsPaid ? "Paid" : "Not Paid")}")</td>
                     <td>@(order.OrderStatus?.StatusName ?? "N/A")</td>
-
                     <td class="d-flex gap-2">
-
                         <!-- Modal open button -->
                         <button type="button"
                                 class="btn btn-primary"
@@ -60,17 +59,42 @@
                             Toggle Payment Status
                         </a>
 
-                        @* IMPORTANT: partial ta ei <td> er moddhei render korun *@
                         @await Html.PartialAsync("/Views/AdminOperations/_OrderDetailModel.cshtml",
                             new OrderDetailsModelDTO {
                                 DivID = order.Id.ToString(),
-                                OrderDetail = order.OrderDetail // ICollection<OrderDetail> thakle-o ok
+                                OrderDetail = order.OrderDetail
                             })
                     </td>
                 </tr>
             }
             </tbody>
         </table>
+
+        <!-- Pagination -->
+        <nav>
+            <ul class="pagination">
+                <li class="page-item @(Model.PageNumber == 1 ? "disabled" : "")">
+                    <a class="page-link"
+                       asp-action="AllOrders"
+                       asp-route-page="@(Model.PageNumber - 1)">Previous</a>
+                </li>
+
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                        <a class="page-link"
+                           asp-action="AllOrders"
+                           asp-route-page="@i">@i</a>
+                    </li>
+                }
+
+                <li class="page-item @(Model.PageNumber == Model.TotalPages ? "disabled" : "")">
+                    <a class="page-link"
+                       asp-action="AllOrders"
+                       asp-route-page="@(Model.PageNumber + 1)">Next</a>
+                </li>
+            </ul>
+        </nav>
     }
     else
     {
