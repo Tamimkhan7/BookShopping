@@ -12,16 +12,22 @@ namespace BookShopping.Services
             _db = db;
         }
 
-        // Return all genres
         public async Task<IEnumerable<Genre>> Genres()
         {
             return await _db.Genres.ToListAsync();
         }
 
-        // Get books with optional search and genre filter
-        public async Task<IEnumerable<Book>> GetBooks(string sTrem = "", int genreId = 0)
+        public async Task<IEnumerable<string>> GetAuthors()
         {
-            sTrem = sTrem.ToLower();
+            return await _db.Books
+                .Select(b => b.AuthorName)
+                .Distinct()
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Book>> GetBooks(string strem, int genreId, string author, string sortBy, decimal minPrice, decimal maxPrice)
+        {
+            strem = strem?.ToLower() ?? "";
 
             var booksQuery = from book in _db.Books
                              join genre in _db.Genres on book.GenreId equals genre.Id
@@ -40,23 +46,41 @@ namespace BookShopping.Services
                                  Reviews = book.Reviews
                              };
 
-            if (!string.IsNullOrWhiteSpace(sTrem))
-                booksQuery = booksQuery.Where(b => b.BookName.ToLower().StartsWith(sTrem));
+            if (!string.IsNullOrWhiteSpace(strem))
+                booksQuery = booksQuery.Where(b => b.BookName.ToLower().Contains(strem));
 
             if (genreId > 0)
                 booksQuery = booksQuery.Where(b => b.GenreId == genreId);
 
+            if (!string.IsNullOrEmpty(author))
+                booksQuery = booksQuery.Where(b => b.AuthorName == author);
+
+            if (minPrice > 0)
+                booksQuery = booksQuery.Where(b => b.Price >= (double)minPrice);
+
+            if (maxPrice > 0)
+                booksQuery = booksQuery.Where(b => b.Price <= (double)maxPrice);
+
+            booksQuery = sortBy switch
+            {
+                "bestseller" => booksQuery.OrderByDescending(b => b.Quantity),
+                "rating" => booksQuery.OrderByDescending(b => b.Reviews.Any() ? b.Reviews.Average(r => (decimal)r.Rating) : 0),
+                "new" => booksQuery.OrderByDescending(b => b.Id), // assuming Id ~ newest
+                "pricelow" => booksQuery.OrderBy(b => b.Price),
+                "pricehigh" => booksQuery.OrderByDescending(b => b.Price),
+                _ => booksQuery.OrderBy(b => b.BookName)
+            };
+
             return await booksQuery.ToListAsync();
         }
 
-        // Get book by Id with genre, stock, reviews
         public async Task<Book?> GetBookByIdAsync(int id)
         {
             var book = await _db.Books
-                 .Include(b => b.Genre)
-                 .Include(b => b.Reviews)
-                 .Include(b => b.Stock)
-                 .FirstOrDefaultAsync(b => b.Id == id);
+                .Include(b => b.Genre)
+                .Include(b => b.Reviews)
+                .Include(b => b.Stock)
+                .FirstOrDefaultAsync(b => b.Id == id);
 
             if (book != null && book.Stock != null)
                 book.Quantity = book.Stock.Quantity;
@@ -64,19 +88,25 @@ namespace BookShopping.Services
             return book;
         }
 
-        // Related books by genre excluding current book, sorted by AverageRating
-        public Task<List<Book>> GetRelatedBooksAsync(int bookId, int genreId, int count = 5)
+        public async Task<List<Book>> GetRelatedBooksAsync(int bookId, int genreId, int count = 4)
         {
-            // Client-side sorting for AverageRating
-            var relatedBooks = _db.Books
-               .Where(b => b.GenreId == genreId && b.Id != bookId)
-               .AsEnumerable() //all data niye jawa hocce
-               .OrderByDescending(b => b.AverageRating) //sort korteci average rating onujayi
-               .Take(count)
-               .ToList();
+            var relatedBooks = await _db.Books
+                .Where(b => b.GenreId == genreId && b.Id != bookId)
+                .Include(b => b.Genre)
+                .Include(b => b.Reviews)
+                .Include(b => b.Stock)
+                .ToListAsync();
 
-            return Task.FromResult(relatedBooks); // return as Task<List<Book>>
+            foreach (var book in relatedBooks)
+            {
+                book.GenreName = book.Genre?.GenreName;
+                book.Quantity = book.Stock?.Quantity ?? 0;
+            }
+
+            return relatedBooks
+                .OrderByDescending(b => b.AverageRating)
+                .Take(count)
+                .ToList();
         }
     }
 }
-

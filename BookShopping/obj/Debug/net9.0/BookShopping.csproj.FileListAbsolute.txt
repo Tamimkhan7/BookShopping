@@ -455,7 +455,6 @@ C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookS
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.AssemblyInfoInputs.cache
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.AssemblyInfo.cs
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.csproj.CoreCompileInputs.cache
-C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.RazorAssemblyInfo.cache
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.RazorAssemblyInfo.cs

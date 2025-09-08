@@ -5,101 +5,144 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="my-2">
-    <form asp-action="Index" class="row row-cols-lg-auto g-3 align-items-center">
-        <div class="col-12">
-            <label class="visually-hidden" for="genreId">Genres</label>
-            <select class="form-select" id="genreId" name="genreId">
-                <option value="">Genre</option>
-                @foreach (var genre in Model.Genres)
-                {
-                    <option selected="@(genre.Id == Model.GenreId)" value="@genre.Id">@genre.GenreName</option>
-                }
-            </select>
-        </div>
+<div class="row g-4">
+    <!-- Sidebar Filter -->
+    <div class="col-lg-3">
+        <div class="card p-3 shadow-sm">
+            <h5 class="mb-3 text-primary"> Search</h5>
+            <form asp-action="Index" method="get">
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="strem" value="@Model.STerm" placeholder="Search by title" />
+                </div>
 
-        <div class="col-12">
-            <label class="visually-hidden" for="strem">Search by title</label>
-            <div class="input-group">
-                <input type="text" class="form-control" id="strem" value="@Model.STerm" name="strem" placeholder="Search by title">
-            </div>
-        </div>
-
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Search</button>
-            <a href="/Home/Index" class="btn btn-dark">Reset</a>
-        </div>
-    </form>
-</div>
-
-<div class="w-100 d-flex flex-wrap mt-4">
-    @foreach (var book in Model.PagedBooks.Data)
-    {
-        <div class="card mx-3 mb-4" style="width: 17rem;">
-            <img style="width:100%; height:180px" src="@(string.IsNullOrEmpty(book.Image) ? "/Image/Image.jpg" : book.Image)" class="card-img-top" alt="@book.BookName">
-
-            <div class="card-body">
-                <h5 class="card-title"><b>@book.BookName</b></h5>
-                <p class="card-text">
-                    <b>Genre</b> : @book.GenreName<br />
-                    <b>Author</b>: @book.AuthorName<br />
-                    <b>Price</b> : $@book.Price
-                </p>
-
-                <h6>
-                    Rating:
-                    @for (int i = 1; i <= 5; i++)
-                    {
-                        if (i <= Math.Round(book.AverageRating))
+                <h5 class="mb-2 text-primary"> Genre</h5>
+                <div class="mb-3">
+                    <select name="genreId" class="form-select">
+                        <option value="0">All</option>
+                        @foreach (var g in Model.Genres)
                         {
-                            <span style="color: gold;">&#9733;</span>
+                            <option value="@g.Id" selected="@(g.Id == Model.GenreId ? "selected" : null)">@g.GenreName</option>
                         }
-                        else
+                    </select>
+                </div>
+
+                <h5 class="mb-2 text-primary"> Author</h5>
+                <div class="mb-3">
+                    <select name="author" class="form-select">
+                        <option value="">All</option>
+                        @foreach (var a in Model.Authors)
                         {
-                            <span style="color: lightgray;">&#9733;</span>
+                            <option value="@a" selected="@(a == Model.SelectedAuthor ? "selected" : null)">@a</option>
                         }
-                    }
-                </h6>
+                    </select>
+                </div>
 
-                @if (book.Quantity > 0)
-                {
-                    <button type="button" onclick="addToCart(@book.Id)" class="btn btn-primary mt-2">Add to cart</button>
-                }
-                else
-                {
-                    <span class="border border-danger rounded px-2 py-1 text-danger d-inline-block mt-2">Out of Stock</span>
-                }
+                <h5 class="mb-2 text-primary"> Sort By</h5>
+                <div class="mb-3">
+                    <select name="sortBy" class="form-select">
+                        <option value="">Title (A-Z)</option>
+                        <option value="bestseller" selected="@(Model.SortBy == "bestseller" ? "selected" : null)">Best Seller</option>
+                        <option value="rating" selected="@(Model.SortBy == "rating" ? "selected" : null)">Top Rating</option>
+                        <option value="new" selected="@(Model.SortBy == "new" ? "selected" : null)">New Arrival</option>
+                        <option value="pricelow" selected="@(Model.SortBy == "pricelow" ? "selected" : null)">Price: Low → High</option>
+                        <option value="pricehigh" selected="@(Model.SortBy == "pricehigh" ? "selected" : null)">Price: High → Low</option>
+                        @* <option value="year" selected="@(Model.SortBy == "year" ? "selected" : null)">Published Year</option> *@
+                    </select>
+                </div>
 
-                <a asp-action="Details" asp-route-id="@book.Id"
-                   class="btn btn-secondary @(book.Quantity > 0 ? "mt-2" : "")">
-                    View Details
-                </a>
-            </div>
+                <h5 class="mb-2 text-primary">Price Range</h5>
+                <div class="d-flex mb-3 gap-2">
+                    <input type="number" name="minPrice" value="@Model.MinPrice" class="form-control" placeholder="Min" />
+                    <input type="number" name="maxPrice" value="@Model.MaxPrice" class="form-control" placeholder="Max" />
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 mb-2">Apply Filters</button>
+                <a href="/Home/Index" class="btn btn-outline-secondary w-100">Reset</a>
+            </form>
         </div>
-    }
+    </div>
+
+    <!-- Book List -->
+    <div class="col-lg-9">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            @foreach (var book in Model.PagedBooks.Data)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="@(string.IsNullOrEmpty(book.Image) ? "/Image/Image.jpg" : "/Image/Image.jpg")"
+                             class="card-img-top" style="height:150px; width: 150px; object-fit:cover;" alt="@book.BookName" />
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">@book.BookName</h5>
+                            <p class="card-text mb-1">
+                                <span class="badge bg-info text-white">
+                                    <strong class="fs-6">Genre: </strong>
+                                    <span class="fs-6 fw-bold">@book.GenreName</span>
+                                </span>
+                                <br />
+                                <span class="badge bg-secondary mt-2">
+                                    <strong class="fs-7">Author: </strong>
+                                    <span class="fs-7 fw-bold">@book.AuthorName</span>
+                                </span>
+
+                            </p>
+                           <p class="card-text fw-bold mb-2"><strong>Price: </strong>$@book.Price</p>
+
+                            <div class="mb-2">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    if (i <= Math.Round(book.AverageRating))
+                                    {
+                                        <span class="text-warning">&#9733;</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">&#9733;</span>
+                                    }
+                                }
+                            </div>
+
+                            <div class="mt-auto d-flex flex-column gap-2">
+                                @if (book.Quantity > 0)
+                                {
+                                    <button type="button" onclick="addToCart(@book.Id)" class="btn btn-success w-100">Add to Cart</button>
+                                }
+                                else
+                                {
+                                    <span class="text-danger fw-bold text-center">Out of Stock</span>
+                                }
+
+                                <a asp-action="Details" asp-route-id="@book.Id" class="btn btn-outline-primary w-100">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Pagination -->
+        <nav class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item @(Model.PagedBooks.PageNumber == 1 ? "disabled" : "")">
+                    <a class="page-link"
+                       href="?page=@(Model.PagedBooks.PageNumber - 1)&pageSize=@Model.PagedBooks.PageSize&strem=@Model.STerm&genreId=@Model.GenreId&author=@Model.SelectedAuthor&sortBy=@Model.SortBy&minPrice=@Model.MinPrice&maxPrice=@Model.MaxPrice">Prev</a>
+                </li>
+
+                @for (int i = 1; i <= Model.PagedBooks.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.PagedBooks.PageNumber ? "active" : "")">
+                        <a class="page-link"
+                           href="?page=@i&pageSize=@Model.PagedBooks.PageSize&strem=@Model.STerm&genreId=@Model.GenreId&author=@Model.SelectedAuthor&sortBy=@Model.SortBy&minPrice=@Model.MinPrice&maxPrice=@Model.MaxPrice">@i</a>
+                    </li>
+                }
+
+                <li class="page-item @(Model.PagedBooks.PageNumber == Model.PagedBooks.TotalPages ? "disabled" : "")">
+                    <a class="page-link"
+                       href="?page=@(Model.PagedBooks.PageNumber + 1)&pageSize=@Model.PagedBooks.PageSize&strem=@Model.STerm&genreId=@Model.GenreId&author=@Model.SelectedAuthor&sortBy=@Model.SortBy&minPrice=@Model.MinPrice&maxPrice=@Model.MaxPrice">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
-
-<!-- Pagination -->
-<nav >
-    <ul class="pagination">
-        <li class="page-item @(Model.PagedBooks.PageNumber == 1 ? "disabled" : "")">
-            <a class="page-link" href="?page=@(Model.PagedBooks.PageNumber - 1)&pageSize=@Model.PagedBooks.PageSize&strem=@Model.STerm&genreId=@Model.GenreId">Prev</a>
-        </li>
-
-        @for (int i = 1; i <= Model.PagedBooks.TotalPages; i++)
-        {
-            <li class="page-item @(i == Model.PagedBooks.PageNumber ? "active" : "")">
-                <a class="page-link" href="?page=@i&pageSize=@Model.PagedBooks.PageSize&strem=@Model.STerm&genreId=@Model.GenreId">@i</a>
-            </li>
-        }
-
-        <li class="page-item @(Model.PagedBooks.PageNumber == Model.PagedBooks.TotalPages ? "disabled" : "")">
-            <a class="page-link" href="?page=@(Model.PagedBooks.PageNumber + 1)&pageSize=@Model.PagedBooks.PageSize&strem=@Model.STerm&genreId=@Model.GenreId">Next</a>
-        </li>
-    </ul>
-</nav>
-
-
 
 @section Scripts {
     <script>
@@ -120,18 +163,3 @@
         }
     </script>
 }
-
-@* <!-- Footer -->
-<footer class="bg-dark text-white mt-8 p-4 text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 mb-2 mb-md-0">
-                <p class="mb-0">&copy; @DateTime.Now.Year BookShopping. All rights reserved.</p>
-            </div>
-            <div class="col-md-6">
-                <a href="/Home/Privacy" class="text-white me-3">Privacy Policy</a>
-                <a href="/Home/Contact" class="text-white">Contact Us</a>
-            </div>
-        </div>
-    </div>
-</footer> *@

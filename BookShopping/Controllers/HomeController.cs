@@ -23,9 +23,11 @@ namespace BookShopping.Controllers
             _reviewService = reviewService;
         }
 
-        public async Task<IActionResult> Index(string strem = "", int genreId = 0, int page = 1, int pageSize = 12)
+        public async Task<IActionResult> Index(
+            string strem = "", int genreId = 0, string author = "", string sortBy = "",
+            decimal minPrice = 0, decimal maxPrice = 0, int page = 1, int pageSize = 12)
         {
-            var allBooks = await _homeRepository.GetBooks(strem, genreId);
+            var allBooks = await _homeRepository.GetBooks(strem, genreId, author, sortBy, minPrice, maxPrice);
 
             foreach (var book in allBooks)
             {
@@ -44,8 +46,13 @@ namespace BookShopping.Controllers
             {
                 PagedBooks = pagedResult,
                 Genres = await _homeRepository.Genres(),
+                Authors = await _homeRepository.GetAuthors(),
                 STerm = strem,
-                GenreId = genreId
+                GenreId = genreId,
+                SelectedAuthor = author,
+                SortBy = sortBy,
+                MinPrice = minPrice,
+                MaxPrice = maxPrice
             };
 
             ViewBag.RecentReviews = await _reviewService.GetRecentReviewsAsync();
@@ -60,7 +67,7 @@ namespace BookShopping.Controllers
 
             book.Reviews = await _reviewService.GetReviewsByBookIdAsync(book.Id);
 
-            var relatedBooks = await _homeRepository.GetRelatedBooksAsync(book.Id, book.GenreId, 5);
+            var relatedBooks = await _homeRepository.GetRelatedBooksAsync(book.Id, book.GenreId, 4);
             ViewBag.RelatedBooks = relatedBooks;
 
             return View(book);

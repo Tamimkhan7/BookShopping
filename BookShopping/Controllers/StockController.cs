@@ -64,12 +64,14 @@ namespace BookShopping.Controllers
             {
                 await _stockRepo.ManageStock(stock);
                 TempData["successMessage"] = "Stock updated successfully!";
+
             }
             catch (Exception)
             {
                 TempData["errorMessage"] = "Something went wrong!";
             }
-            return RedirectToAction(nameof(Index));
+            //return RedirectToAction(nameof(Index));
+            return View(stock);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿@model BookShopping.Models.Book
 @{
-    ViewData["Title"] = "Book Details";
+    ViewData["Title"] = "Book Details"; 
+    // ViewBag always store object type data, so we need to cast it to the original type
     var relatedBooks = ViewBag.RelatedBooks as List<BookShopping.Models.Book>;
 }
 
@@ -11,7 +12,7 @@
             <div class="card mb-4 shadow-sm">
                 <div class="row g-0">
                     <div class="col-md-5">
-                        <img src="@(string.IsNullOrEmpty(Model.Image) ? "/Image/Image.jpg" : Model.Image)" class="img-fluid rounded-start" alt="@Model.BookName" />
+                        <img src="@(string.IsNullOrEmpty(Model.Image) ? "/Image/Image.jpg" : "/Image/Image.jpg")" class="img-fluid rounded-start" alt="@Model.BookName" />
                     </div>
                     <div class="col-md-7">
                         <div class="card-body">
@@ -71,7 +72,6 @@
         </div>
 
         <!-- Related Books (Right) -->
-        @* ai part buja lagbe  *@
         <div class="col-lg-4 col-md-12">
             <h4 class="mb-3">Related Books</h4>
             @if (relatedBooks != null && relatedBooks.Any())
@@ -80,15 +80,34 @@
                 {
                     <div class="card mb-3 shadow-sm" style="font-size: 0.9rem;">
                         <div class="d-flex align-items-center p-2">
-                            <img src="@(string.IsNullOrEmpty(rb.Image) ? "/Image/Image.jpg" : rb.Image)"
+                            <img src="@(string.IsNullOrEmpty(rb.Image) ? "/Image/Image.jpg" : "/Image/Image.jpg")"
                                  alt="@rb.BookName"
                                  style="height: 120px; width: 90px; object-fit: cover; border-radius: 4px;" />
                             <div class="card-body p-2 ms-2 flex-grow-1">
                                 <h6 class="card-title mb-1" style="font-size: 0.95rem;">@rb.BookName</h6>
-                                <p class="card-text mb-2" style="font-size: 0.85rem; color: #555;">@rb.AuthorName</p>
+
+                                <p class="card-text mb-2" style="font-size: 0.85rem; color: #555;">
+                                    <strong>Author:</strong> @rb.AuthorName
+                                </p>
+                                <p class="card-text mb-2" style="font-size: 0.85rem; color: #555;">
+                                    <strong>Genre:</strong> @rb.GenreName
+                                </p>
+                                <p class="card-text mb-2" style="font-size: 0.85rem; color: #555;">
+                                    <strong>Price:</strong> @rb.Price
+                                </p>
+                                <p class="card-text mb-2" style="font-size: 0.85rem; color: #555;">
+                                    <strong>Rating:</strong> @(rb.AverageRating.ToString("0.0"))
+                                </p>
 
                                 <div class="d-flex justify-content-between">
-                                    <button type="button" class="btn btn-sm btn-success" onclick="addToCart(@rb.Id)">Add to Cart</button>
+                                  @if (rb.Quantity > 0)
+                                  {
+                                      <button type="button" onclick="addToCart(@rb.Id)" class="btn btn-sm btn-success">Add to Cart</button>
+                                  }
+                                  else
+                                  {
+                                     <span class="badge bg-danger">Out of Stock</span>
+                                  }
                                     <a asp-controller="Home" asp-action="Details" asp-route-id="@rb.Id"
                                        class="btn btn-sm btn-info">View Details</a>
                                 </div>
@@ -102,6 +121,7 @@
                 <p>No related books found.</p>
             }
         </div>
+
 
 </div>
 
