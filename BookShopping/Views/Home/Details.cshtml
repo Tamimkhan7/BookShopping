@@ -1,18 +1,19 @@
 ﻿@model BookShopping.Models.Book
+
 @{
-    ViewData["Title"] = "Book Details"; 
-    // ViewBag always store object type data, so we need to cast it to the original type
+    ViewData["Title"] = "Book Details";
     var relatedBooks = ViewBag.RelatedBooks as List<BookShopping.Models.Book>;
 }
 
 <div class="container mt-4">
     <div class="row">
-        <!-- Main Book Details (Left) -->
+        <!-- Main Book Details -->
         <div class="col-lg-8 col-md-12">
             <div class="card mb-4 shadow-sm">
                 <div class="row g-0">
                     <div class="col-md-5">
-                        <img src="@(string.IsNullOrEmpty(Model.Image) ? "/Image/Image.jpg" : "/Image/Image.jpg")" class="img-fluid rounded-start" alt="@Model.BookName" />
+                        <img src="@(string.IsNullOrEmpty(Model.Image) ? "/Image/Image.jpg" : "/Image/Image.jpg")"
+                             class="img-fluid rounded-start" alt="@Model.BookName" />
                     </div>
                     <div class="col-md-7">
                         <div class="card-body">
@@ -20,9 +21,12 @@
                             <p><strong>Author:</strong> @Model.AuthorName</p>
                             <p><strong>Genre:</strong> @Model.Genre?.GenreName</p>
                             <p><strong>Price:</strong> $@Model.Price</p>
+                            <p><strong>Discount:</strong> @Model.DiscountPercentage %</p>
+                            <p class="text-danger"><strong>Final Price:</strong> $@Model.DiscountedPrice</p>
 
+                            <!-- Rating -->
                             <div class="mb-2">
-                                <strong>Rating:</strong>
+                                @* <strong>Rating:</strong> *@
                                 @for (int i = 1; i <= 5; i++)
                                 {
                                     if (i <= Math.Round(Model.AverageRating))
@@ -71,7 +75,7 @@
             }
         </div>
 
-        <!-- Related Books (Right) -->
+        <!-- Related Books -->
         <div class="col-lg-4 col-md-12">
             <h4 class="mb-3">Related Books</h4>
             @if (relatedBooks != null && relatedBooks.Any())
@@ -84,32 +88,24 @@
                                  alt="@rb.BookName"
                                  style="height: 120px; width: 90px; object-fit: cover; border-radius: 4px;" />
                             <div class="card-body p-2 ms-2 flex-grow-1">
-                                <h6 class="card-title mb-1" style="font-size: 0.95rem;">@rb.BookName</h6>
-
-                                <p class="card-text mb-2" style="font-size: 0.85rem; color: #555;">
-                                    <strong>Author:</strong> @rb.AuthorName
-                                </p>
-                                <p class="card-text mb-2" style="font-size: 0.85rem; color: #555;">
-                                    <strong>Genre:</strong> @rb.GenreName
-                                </p>
-                                <p class="card-text mb-2" style="font-size: 0.85rem; color: #555;">
-                                    <strong>Price:</strong> @rb.Price
-                                </p>
-                                <p class="card-text mb-2" style="font-size: 0.85rem; color: #555;">
-                                    <strong>Rating:</strong> @(rb.AverageRating.ToString("0.0"))
-                                </p>
+                                <h6 class="card-title mb-1">@rb.BookName</h6>
+                                <p class="card-text mb-1"><strong>Author:</strong> @rb.AuthorName</p>
+                                <p class="card-text mb-1"><strong>Genre:</strong> @rb.GenreName</p>
+                                <p class="card-text mb-1"><strong>Price:</strong> $@rb.Price</p>
+                                <p class="card-text mb-1"><strong>Discount:</strong> @rb.DiscountPercentage %</p>
+                                <p class="card-text mb-1 text-danger"><strong>Final Price:</strong> $@rb.DiscountedPrice</p>
+                                <p class="card-text mb-1"><strong>Rating:</strong> @(rb.AverageRating.ToString("0.0"))</p>
 
                                 <div class="d-flex justify-content-between">
-                                  @if (rb.Quantity > 0)
-                                  {
-                                      <button type="button" onclick="addToCart(@rb.Id)" class="btn btn-sm btn-success">Add to Cart</button>
-                                  }
-                                  else
-                                  {
-                                     <span class="badge bg-danger">Out of Stock</span>
-                                  }
-                                    <a asp-controller="Home" asp-action="Details" asp-route-id="@rb.Id"
-                                       class="btn btn-sm btn-info">View Details</a>
+                                    @if (rb.Quantity > 0)
+                                    {
+                                        <button type="button" onclick="addToCart(@rb.Id)" class="btn btn-sm btn-success">Add to Cart</button>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Out of Stock</span>
+                                    }
+                                    <a asp-controller="Home" asp-action="Details" asp-route-id="@rb.Id" class="btn btn-sm btn-info">View Details</a>
                                 </div>
                             </div>
                         </div>
@@ -121,8 +117,7 @@
                 <p>No related books found.</p>
             }
         </div>
-
-
+    </div>
 </div>
 
 @section Scripts {

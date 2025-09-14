@@ -9,13 +9,13 @@
     <!-- Sidebar Filter -->
     <div class="col-lg-3">
         <div class="card p-3 shadow-sm">
-            <h5 class="mb-3 text-primary"> Search</h5>
+            <h5 class="mb-3 text-primary">Search</h5>
             <form asp-action="Index" method="get">
                 <div class="mb-3">
                     <input type="text" class="form-control" name="strem" value="@Model.STerm" placeholder="Search by title" />
                 </div>
 
-                <h5 class="mb-2 text-primary"> Genre</h5>
+                <h5 class="mb-2 text-primary">Genre</h5>
                 <div class="mb-3">
                     <select name="genreId" class="form-select">
                         <option value="0">All</option>
@@ -26,7 +26,7 @@
                     </select>
                 </div>
 
-                <h5 class="mb-2 text-primary"> Author</h5>
+                <h5 class="mb-2 text-primary">Author</h5>
                 <div class="mb-3">
                     <select name="author" class="form-select">
                         <option value="">All</option>
@@ -37,7 +37,7 @@
                     </select>
                 </div>
 
-                <h5 class="mb-2 text-primary"> Sort By</h5>
+                <h5 class="mb-2 text-primary">Sort By</h5>
                 <div class="mb-3">
                     <select name="sortBy" class="form-select">
                         <option value="">Title (A-Z)</option>
@@ -46,7 +46,6 @@
                         <option value="new" selected="@(Model.SortBy == "new" ? "selected" : null)">New Arrival</option>
                         <option value="pricelow" selected="@(Model.SortBy == "pricelow" ? "selected" : null)">Price: Low → High</option>
                         <option value="pricehigh" selected="@(Model.SortBy == "pricehigh" ? "selected" : null)">Price: High → Low</option>
-                        @* <option value="year" selected="@(Model.SortBy == "year" ? "selected" : null)">Published Year</option> *@
                     </select>
                 </div>
 
@@ -75,18 +74,26 @@
                             <h5 class="card-title">@book.BookName</h5>
                             <p class="card-text mb-1">
                                 <span class="badge bg-info text-white">
-                                    <strong class="fs-6">Genre: </strong>
-                                    <span class="fs-6 fw-bold">@book.GenreName</span>
+                                    <strong>Genre: </strong>@book.GenreName
                                 </span>
                                 <br />
                                 <span class="badge bg-secondary mt-2">
-                                    <strong class="fs-7">Author: </strong>
-                                    <span class="fs-7 fw-bold">@book.AuthorName</span>
+                                    <strong>Author: </strong>@book.AuthorName
                                 </span>
-
                             </p>
-                           <p class="card-text fw-bold mb-2"><strong>Price: </strong>$@book.Price</p>
 
+                            <!-- Price & Discount -->
+                            <p class="card-text fw-bold mb-1">
+                                <strong>Price: </strong>$@book.Price
+                            </p>
+                            <p class="card-text fw-bold mb-1 text-success">
+                                <strong>Discount: </strong>@book.DiscountPercentage %
+                            </p>
+                            <p class="card-text fw-bold mb-2 text-danger">
+                                <strong>Final Price: </strong>$@book.DiscountedPrice
+                            </p>
+
+                            <!-- Rating -->
                             <div class="mb-2">
                                 @for (int i = 1; i <= 5; i++)
                                 {
@@ -101,6 +108,7 @@
                                 }
                             </div>
 
+                            <!-- Buttons -->
                             <div class="mt-auto d-flex flex-column gap-2">
                                 @if (book.Quantity > 0)
                                 {
@@ -108,7 +116,7 @@
                                 }
                                 else
                                 {
-                                    <span class="text-danger fw-bold text-center">Out of Stock</span>
+                                    <span class="text-danger fw-bold text-center w-100">Out of Stock</span>
                                 }
 
                                 <a asp-action="Details" asp-route-id="@book.Id" class="btn btn-outline-primary w-100">View Details</a>
@@ -124,20 +132,20 @@
             <ul class="pagination justify-content-center">
                 <li class="page-item @(Model.PagedBooks.PageNumber == 1 ? "disabled" : "")">
                     <a class="page-link"
-                       href="?page=@(Model.PagedBooks.PageNumber - 1)&pageSize=@Model.PagedBooks.PageSize&strem=@Model.STerm&genreId=@Model.GenreId&author=@Model.SelectedAuthor&sortBy=@Model.SortBy&minPrice=@Model.MinPrice&maxPrice=@Model.MaxPrice">Prev</a>
+                       href="?page=@(Model.PagedBooks.PageNumber - 1)&pageSize=@Model.PagedBooks.PageSize">Prev</a>
                 </li>
 
                 @for (int i = 1; i <= Model.PagedBooks.TotalPages; i++)
                 {
                     <li class="page-item @(i == Model.PagedBooks.PageNumber ? "active" : "")">
                         <a class="page-link"
-                           href="?page=@i&pageSize=@Model.PagedBooks.PageSize&strem=@Model.STerm&genreId=@Model.GenreId&author=@Model.SelectedAuthor&sortBy=@Model.SortBy&minPrice=@Model.MinPrice&maxPrice=@Model.MaxPrice">@i</a>
+                           href="?page=@i&pageSize=@Model.PagedBooks.PageSize">@i</a>
                     </li>
                 }
 
                 <li class="page-item @(Model.PagedBooks.PageNumber == Model.PagedBooks.TotalPages ? "disabled" : "")">
                     <a class="page-link"
-                       href="?page=@(Model.PagedBooks.PageNumber + 1)&pageSize=@Model.PagedBooks.PageSize&strem=@Model.STerm&genreId=@Model.GenreId&author=@Model.SelectedAuthor&sortBy=@Model.SortBy&minPrice=@Model.MinPrice&maxPrice=@Model.MaxPrice">Next</a>
+                       href="?page=@(Model.PagedBooks.PageNumber + 1)&pageSize=@Model.PagedBooks.PageSize">Next</a>
                 </li>
             </ul>
         </nav>

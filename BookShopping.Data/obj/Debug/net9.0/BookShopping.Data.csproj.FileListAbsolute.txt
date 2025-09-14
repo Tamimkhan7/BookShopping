@@ -18,7 +18,9 @@ C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\bin\Debug\net9.0\
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\bin\Debug\net9.0\BookShopping.Data.dll
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\bin\Debug\net9.0\BookShopping.Data.pdb
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\bin\Debug\net9.0\BookShopping.Models.dll
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\bin\Debug\net9.0\BookShopping.Utility.dll
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\bin\Debug\net9.0\BookShopping.Models.pdb
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\bin\Debug\net9.0\BookShopping.Utility.pdb
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\obj\Debug\net9.0\BookShopping.Data.csproj.AssemblyReference.cache
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\obj\Debug\net9.0\BookShopping.Data.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\obj\Debug\net9.0\BookShopping.Data.AssemblyInfoInputs.cache
@@ -30,5 +32,3 @@ C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\obj\Debug\net9.0\
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\obj\Debug\net9.0\refint\BookShopping.Data.dll
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\obj\Debug\net9.0\BookShopping.Data.pdb
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\obj\Debug\net9.0\ref\BookShopping.Data.dll
-C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\bin\Debug\net9.0\BookShopping.Utility.dll
-C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping.Data\bin\Debug\net9.0\BookShopping.Utility.pdb

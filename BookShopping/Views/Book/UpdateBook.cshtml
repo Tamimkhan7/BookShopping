@@ -38,6 +38,13 @@
             <span asp-validation-for="Price" class="text-danger"></span>
         </div>
 
+        <!-- ✅ Discount input -->
+        <div class="my-2">
+            <label>Discount (%)</label>
+            <input type="number" class="form-control" asp-for="DiscountPercentage" min="0" max="100" />
+            <span asp-validation-for="DiscountPercentage" class="text-danger"></span>
+        </div>
+
         <div class="my-2">
             <label>Image</label>
             @if(!string.IsNullOrWhiteSpace(Model.Image))         

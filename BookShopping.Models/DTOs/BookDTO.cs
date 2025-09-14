@@ -19,6 +19,10 @@ namespace BookShopping.Models.DTOs
         [Required]
         public double Price { get; set; }
 
+        // ✅ Discount property added
+        [Range(0, 100)]
+        public double DiscountPercentage { get; set; } = 0;
+
         public string? Image { get; set; }
 
         [Required]

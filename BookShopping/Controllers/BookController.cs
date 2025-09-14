@@ -22,7 +22,7 @@ namespace BookShopping.Controllers
             _fileService = fileService;
         }
 
-        // Index with Pagination
+        // ✅ Index with Pagination
         public async Task<IActionResult> Index(int page = 1, int pageSize = 10)
         {
             var allBooks = await _bookRepo.GetBooks();
@@ -87,25 +87,16 @@ namespace BookShopping.Controllers
                     AuthorName = bookToAdd.AuthorName,
                     GenreId = bookToAdd.GenreId,
                     Image = bookToAdd.Image,
-                    Price = bookToAdd.Price
+                    Price = bookToAdd.Price,
+                    DiscountPercentage = bookToAdd.DiscountPercentage   // ✅ Added
                 };
                 await _bookRepo.AddBook(book);
                 TempData["successMessage"] = "Book added successfully!";
                 return RedirectToAction(nameof(Index));
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                return View(bookToAdd);
-            }
-            catch (FileNotFoundException ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-                return View(bookToAdd);
-            }
-            catch (Exception)
-            {
-                TempData["errorMessage"] = "Book could not be added!";
                 return View(bookToAdd);
             }
         }
@@ -113,7 +104,6 @@ namespace BookShopping.Controllers
         public async Task<IActionResult> UpdateBook(int id)
         {
             var book = await _bookRepo.GetBookById(id);
-
             if (book == null)
             {
                 TempData["errorMessage"] = $"Book with id: {id} not found";
@@ -134,6 +124,7 @@ namespace BookShopping.Controllers
                 AuthorName = book.AuthorName,
                 GenreId = book.GenreId,
                 Price = book.Price,
+                DiscountPercentage = book.DiscountPercentage,  // ✅ Added
                 Image = book.Image,
                 GenreList = genreSelectList
             };
@@ -174,6 +165,7 @@ namespace BookShopping.Controllers
                     AuthorName = bookToUpdate.AuthorName,
                     GenreId = bookToUpdate.GenreId,
                     Price = bookToUpdate.Price,
+                    DiscountPercentage = bookToUpdate.DiscountPercentage,   // ✅ Added
                     Image = bookToUpdate.Image
                 };
                 await _bookRepo.UpdateBook(book);
@@ -184,19 +176,9 @@ namespace BookShopping.Controllers
                 TempData["successMessage"] = "Book updated successfully!";
                 return RedirectToAction(nameof(Index));
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                return View(bookToUpdate);
-            }
-            catch (FileNotFoundException ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-                return View(bookToUpdate);
-            }
-            catch (Exception)
-            {
-                TempData["errorMessage"] = "Book could not be updated!";
                 return View(bookToUpdate);
             }
         }
@@ -219,17 +201,9 @@ namespace BookShopping.Controllers
                 TempData["successMessage"] = "Book deleted successfully!";
                 return RedirectToAction(nameof(Index));
             }
-            catch (InvalidOperationException ex)
+            catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
-            }
-            catch (FileNotFoundException ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-            }
-            catch (Exception)
-            {
-                TempData["errorMessage"] = "Book could not be deleted!";
             }
             return RedirectToAction(nameof(Index));
         }

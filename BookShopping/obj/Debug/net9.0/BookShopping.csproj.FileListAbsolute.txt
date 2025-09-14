@@ -455,6 +455,7 @@ C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookS
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.AssemblyInfoInputs.cache
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.AssemblyInfo.cs
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.csproj.CoreCompileInputs.cache
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.RazorAssemblyInfo.cache
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.RazorAssemblyInfo.cs
@@ -575,6 +576,7 @@ C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\bin\Debug\net9.0\Syste
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\bin\Debug\net9.0\System.Formats.Asn1.dll
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\bin\Debug\net9.0\System.Linq.Dynamic.Core.dll
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\bin\Debug\net9.0\System.Memory.Data.dll
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\bin\Debug\net9.0\System.Reflection.MetadataLoadContext.dll
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\bin\Debug\net9.0\System.Runtime.Caching.dll
@@ -776,5 +778,3 @@ C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\stati
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShop.7CA13420.Up2Date
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.genruntimeconfig.cache
 C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\ref\BookShopping.dll
-C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\bin\Debug\net9.0\System.Linq.Dynamic.Core.dll
-C:\Users\Tamim\OneDrive\Desktop\BookShopping\BookShopping\obj\Debug\net9.0\BookShopping.MvcApplicationPartsAssemblyInfo.cs

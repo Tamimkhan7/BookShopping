@@ -24,15 +24,14 @@ namespace BookShopping.Services
         {
             var order = await _db.Orders.FindAsync(model.OrderId);
             if (order == null)
-                throw new InvalidOperationException($"Order with in id : {model.OrderId} does not found");
+                throw new InvalidOperationException($"Order with id: {model.OrderId} not found");
             order.OrderStatusId = model.OrderStatusId;
             await _db.SaveChangesAsync();
-
         }
 
         public async Task<Order>? GetOrderById(int id)
         {
-            return await _db.Orders.FindAsync(id); ///find specific order by id from the database
+            return await _db.Orders.FindAsync(id);
         }
 
         public async Task<IEnumerable<OrderStatus>> GetOrderStatuses()
@@ -43,7 +42,7 @@ namespace BookShopping.Services
         public async Task TogglePaymentStatus(int orderId)
         {
             var order = await _db.Orders.FindAsync(orderId);
-            if (order == null) throw new InvalidOperationException($"order with in id: {orderId} does not found");
+            if (order == null) throw new InvalidOperationException($"Order with id: {orderId} not found");
 
             order.IsPaid = !order.IsPaid;
             await _db.SaveChangesAsync();
@@ -52,10 +51,11 @@ namespace BookShopping.Services
         public async Task<IEnumerable<Order>> UserOrders(bool getAll = false)
         {
             var orders = _db.Orders
-                   .Include(x => x.OrderStatus)
-                   .Include(x => x.OrderDetail)
-                   .ThenInclude(x => x.Book)
-                   .ThenInclude(x => x.Genre).AsQueryable();
+                .Include(x => x.OrderStatus)
+                .Include(x => x.OrderDetail)
+                .ThenInclude(x => x.Book)
+                .ThenInclude(x => x.Genre)
+                .AsQueryable();
 
             if (!getAll)
             {

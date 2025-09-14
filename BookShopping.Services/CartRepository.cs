@@ -32,10 +32,7 @@ namespace BookShopping.Services
                 var cart = await GetCart(userId);
                 if (cart == null)
                 {
-                    cart = new ShoppingCart
-                    {
-                        UserId = userId
-                    };
+                    cart = new ShoppingCart { UserId = userId };
                     _db.ShoppingCarts.Add(cart);
                     await _db.SaveChangesAsync();
                 }
@@ -49,13 +46,15 @@ namespace BookShopping.Services
                 }
                 else
                 {
-                    var book = _db.Books.Find(bookId);
+                    var book = await _db.Books.FindAsync(bookId);
+                    if (book == null) throw new InvalidOperationException("Book not found");
+
                     cartItem = new CartDetail
                     {
                         ShoppingCartId = cart.Id,
                         BookId = bookId,
                         Quantity = qty,
-                        UnitPrice = book.Price //it is a new line after update database
+                        UnitPrice = book.DiscountedPrice // ✅ Save discounted price
                     };
                     _db.CartDetails.Add(cartItem);
                 }
@@ -63,7 +62,7 @@ namespace BookShopping.Services
                 await _db.SaveChangesAsync();
                 await transaction.CommitAsync();
             }
-            catch (Exception)
+            catch
             {
                 await transaction.RollbackAsync();
             }
@@ -80,14 +79,12 @@ namespace BookShopping.Services
                     throw new UnauthorizedAccessException("User is not Logged In");
 
                 var cart = await GetCart(userId);
-                if (cart == null)
-                    throw new InvalidOperationException("Invalid Cart");
+                if (cart == null) throw new InvalidOperationException("Invalid Cart");
 
                 var cartItem = await _db.CartDetails
                     .FirstOrDefaultAsync(a => a.ShoppingCartId == cart.Id && a.BookId == bookId);
 
-                if (cartItem == null)
-                    throw new InvalidOperationException("Item not found in cart");
+                if (cartItem == null) throw new InvalidOperationException("Item not found in cart");
 
                 if (cartItem.Quantity > 1)
                     cartItem.Quantity -= 1;
@@ -96,9 +93,7 @@ namespace BookShopping.Services
 
                 await _db.SaveChangesAsync();
             }
-            catch (Exception)
-            {
-            }
+            catch { }
             return await GetCartItemCount(userId);
         }
 
@@ -109,16 +104,29 @@ namespace BookShopping.Services
                 throw new InvalidOperationException("Invalid userId");
 
             var shoppingCart = await _db.ShoppingCarts
-                      .Include(a => a.CartDetails)
-                      .ThenInclude(a => a.Book)
-                      .ThenInclude(a => a.Stock)
-                       .Include(a => a.CartDetails)
-                      .ThenInclude(a => a.Book)
-                      .ThenInclude(b => b.Genre)
-                      .Where(a => a.UserId == userId)
-                      .FirstOrDefaultAsync();
+                .Include(a => a.CartDetails)
+                .ThenInclude(a => a.Book)
+                .ThenInclude(a => a.Stock)
+                .Include(a => a.CartDetails)
+                .ThenInclude(a => a.Book)
+                .ThenInclude(b => b.Genre)
+                .Where(a => a.UserId == userId)
+                .FirstOrDefaultAsync();
 
-            return shoppingCart;
+            // ✅ Ensure Book.DiscountedPrice is available for View
+            if (shoppingCart != null && shoppingCart.CartDetails != null)
+            {
+                foreach (var cd in shoppingCart.CartDetails)
+                {
+                    if (cd.Book != null)
+                    {
+                        // force compute discounted price (already property, no need to assign)
+                        _ = cd.Book.DiscountedPrice;
+                    }
+                }
+            }
+
+            return shoppingCart!;
         }
 
         public async Task<int> GetCartItemCount(string userId = "")
@@ -135,11 +143,9 @@ namespace BookShopping.Services
             return count;
         }
 
-
         private async Task<ShoppingCart> GetCart(string userId)
         {
-            return await _db.ShoppingCarts
-                .FirstOrDefaultAsync(x => x.UserId == userId);
+            return await _db.ShoppingCarts.FirstOrDefaultAsync(x => x.UserId == userId);
         }
 
         public async Task<bool> DoCheckOut(CheckoutModel model)
@@ -147,9 +153,6 @@ namespace BookShopping.Services
             using var transaction = _db.Database.BeginTransaction();
             try
             {
-                // logic
-                //move data from cartDetail to order and order detail then we will remove cart detail
-
                 var userId = GetUserId();
                 if (string.IsNullOrEmpty(userId))
                     throw new UnauthorizedAccessException("User is not Logged In");
@@ -157,9 +160,9 @@ namespace BookShopping.Services
                 var cart = await GetCart(userId);
                 if (cart is null) throw new InvalidOperationException("Invalid cart");
 
-                var cartDetails = _db.CartDetails
-                    .Where(a => a.ShoppingCartId == cart.Id).ToList();
+                var cartDetails = _db.CartDetails.Where(a => a.ShoppingCartId == cart.Id).ToList();
                 if (cartDetails.Count == 0) throw new InvalidOperationException("Cart is empty");
+
                 var pendingRecord = _db.OrderStatuses.FirstOrDefault(a => a.StatusName == "Pending");
                 if (pendingRecord is null)
                     throw new InvalidOperationException("Order status does not have pending status");
@@ -174,11 +177,12 @@ namespace BookShopping.Services
                     PaymentMethod = model.PaymentMethod,
                     Address = model.Address,
                     IsPaid = false,
-                    OrderStatusId = pendingRecord.Id, // 1 for pending
+                    OrderStatusId = pendingRecord.Id,
                 };
 
                 _db.Orders.Add(order);
                 _db.SaveChanges();
+
                 foreach (var item in cartDetails)
                 {
                     var orderDetail = new OrderDetail
@@ -186,37 +190,28 @@ namespace BookShopping.Services
                         BookId = item.BookId,
                         OrderId = order.Id,
                         Quantity = item.Quantity,
-                        UnitPrice = item.UnitPrice
-
+                        UnitPrice = item.UnitPrice // ✅ already discounted
                     };
                     _db.OrderDetails.Add(orderDetail);
 
-                    // update stock here
                     var stock = await _db.Stocks.FirstOrDefaultAsync(a => a.BookId == item.BookId);
                     if (stock == null) throw new InvalidOperationException("Stock is null");
-
                     if (item.Quantity > stock.Quantity)
-                        throw new InvalidOperationException($"Only {stock.Quantity} items(s) are available in the stock");
+                        throw new InvalidOperationException($"Only {stock.Quantity} items(s) available");
 
-
-                    //decrease the number of quantity from the stock table
                     stock.Quantity -= item.Quantity;
                 }
 
-
-                //_db.SaveChanges();
-                //remove the cartdetails
                 _db.CartDetails.RemoveRange(cartDetails);
                 _db.SaveChanges();
                 transaction.Commit();
                 return true;
             }
-            catch (Exception)
+            catch
             {
                 return false;
             }
         }
-
 
         private string GetUserId()
         {

@@ -8,11 +8,22 @@ namespace BookShopping.Models.DTOs
         public IEnumerable<Book> Books { get; set; }
         public IEnumerable<Genre> Genres { get; set; }
         public IEnumerable<string> Authors { get; set; }
+
         public string STerm { get; set; } = "";
         public int GenreId { get; set; } = 0;
         public string SelectedAuthor { get; set; } = "";
         public string SortBy { get; set; } = "";
         public decimal MinPrice { get; set; } = 0;
         public decimal MaxPrice { get; set; } = 0;
+
+        // ✅ Add discount info for filtering / showing in UI
+        public double DiscountPercentage { get; set; } = 0;
+
+        public double DiscountedPrice(double price)
+        {
+            if (DiscountPercentage > 0)
+                return Math.Round(price - (price * DiscountPercentage / 100), 2);
+            return price;
+        }
     }
 }

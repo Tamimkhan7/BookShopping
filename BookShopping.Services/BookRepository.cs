@@ -17,9 +17,19 @@ namespace BookShopping.Services
             _context.Books.Add(book);
             await _context.SaveChangesAsync();
         }
+
         public async Task UpdateBook(Book book)
         {
-            _context.Books.Update(book);
+            var existing = await _context.Books.FindAsync(book.Id);
+            if (existing != null)
+            {
+                existing.BookName = book.BookName;
+                existing.AuthorName = book.AuthorName;
+                existing.Price = book.Price;
+                existing.DiscountPercentage = book.DiscountPercentage; // ✅ Discount Update
+                existing.GenreId = book.GenreId;
+                existing.Image = book.Image;
+            }
             await _context.SaveChangesAsync();
         }
 
@@ -33,6 +43,7 @@ namespace BookShopping.Services
         {
             return await _context.Books.FindAsync(id);
         }
+
         public async Task<IEnumerable<Book>> GetBooks()
         {
             return await _context.Books.Include(a => a.Genre).ToListAsync();

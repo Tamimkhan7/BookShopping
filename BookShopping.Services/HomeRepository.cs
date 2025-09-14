@@ -41,6 +41,7 @@ namespace BookShopping.Services
                                  BookName = book.BookName,
                                  GenreId = book.GenreId,
                                  Price = book.Price,
+                                 DiscountPercentage = book.DiscountPercentage,
                                  GenreName = genre.GenreName,
                                  Quantity = bookWithStock == null ? 0 : bookWithStock.Quantity,
                                  Reviews = book.Reviews
@@ -55,23 +56,28 @@ namespace BookShopping.Services
             if (!string.IsNullOrEmpty(author))
                 booksQuery = booksQuery.Where(b => b.AuthorName == author);
 
+            // DB theke data fetch
+            var books = await booksQuery.ToListAsync();
+
+            // Memory level filtering (DiscountedPrice support kore)
             if (minPrice > 0)
-                booksQuery = booksQuery.Where(b => b.Price >= (double)minPrice);
+                books = books.Where(b => b.DiscountedPrice >= (double)minPrice).ToList();
 
             if (maxPrice > 0)
-                booksQuery = booksQuery.Where(b => b.Price <= (double)maxPrice);
+                books = books.Where(b => b.DiscountedPrice <= (double)maxPrice).ToList();
 
-            booksQuery = sortBy switch
+            // Sorting
+            books = sortBy switch
             {
-                "bestseller" => booksQuery.OrderByDescending(b => b.Quantity),
-                "rating" => booksQuery.OrderByDescending(b => b.Reviews.Any() ? b.Reviews.Average(r => (decimal)r.Rating) : 0),
-                "new" => booksQuery.OrderByDescending(b => b.Id), // assuming Id ~ newest
-                "pricelow" => booksQuery.OrderBy(b => b.Price),
-                "pricehigh" => booksQuery.OrderByDescending(b => b.Price),
-                _ => booksQuery.OrderBy(b => b.BookName)
+                "bestseller" => books.OrderByDescending(b => b.Quantity).ToList(),
+                "rating" => books.OrderByDescending(b => b.AverageRating).ToList(),
+                "new" => books.OrderByDescending(b => b.Id).ToList(),
+                "pricelow" => books.OrderBy(b => b.DiscountedPrice).ToList(),
+                "pricehigh" => books.OrderByDescending(b => b.DiscountedPrice).ToList(),
+                _ => books.OrderBy(b => b.BookName).ToList()
             };
 
-            return await booksQuery.ToListAsync();
+            return books;
         }
 
         public async Task<Book?> GetBookByIdAsync(int id)

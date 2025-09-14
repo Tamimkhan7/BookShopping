@@ -24,6 +24,8 @@
                                 <th>Genre</th>
                                 <th>Unit Price (BD)</th>
                                 <th>Total Price</th>
+                                <th>Discount (%)</th>
+                                <th>After Discount</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -40,6 +42,8 @@
                                     <td>@item.Book.Genre.GenreName</td>
                                     <td>@item.Book.Price x @item.Quantity</td>
                                     <td>@(item.Book.Price * item.Quantity)</td>
+                                    <td>@item.Book.DiscountPercentage</td>
+                                    <td>@(item.Book.DiscountedPrice * item.Quantity)</td>
                                     <td>
                                         <a class="btn btn-info" asp-controller="Review" asp-action="AddReviewPage" asp-route-bookId="@item.BookId">Review</a>
                                     </td>
@@ -49,7 +53,7 @@
                     </table>
 
                     <div class="text-end fw-bold bg-light p-2">
-                        Total Price: @(order.OrderDetail.Sum(d => d.Book.Price * d.Quantity))
+                        Total Price: @(order.OrderDetail.Sum(d => d.Book.DiscountedPrice * d.Quantity))
                     </div>
                 }
             </div>
@@ -60,7 +64,7 @@
             <ul class="pagination">
 
                 <li class="page-item @(Model.PageNumber == 1 ? "disabled" : "")">
-                    <a class="page-link " href="?page=@(Model.PageNumber - 1)&pageSize=@Model.PageSize" aria-label="Previous">
+                    <a class="page-link" href="?page=@(Model.PageNumber - 1)&pageSize=@Model.PageSize" aria-label="Previous">
                         &laquo; Prev
                     </a>
                 </li>
