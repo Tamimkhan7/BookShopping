@@ -1,6 +1,7 @@
 wwwroot\css\bootstrap.min (2).css
 wwwroot\favicon.ico
 wwwroot\Image\Image.jpg
+wwwroot\images\25a5a6c4-8f8b-4ccb-a126-35661ccf5006.jpeg
 wwwroot\images\29a90a71-f1da-43ea-a2cc-314593cba158.jpg
 wwwroot\images\7c9b8b06-743b-43a1-ad09-53b64234d543.jpeg
 wwwroot\images\92e78e56-7032-4d1e-a625-a3a01e1cb88b.jpg

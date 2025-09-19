@@ -37,10 +37,12 @@
             <span asp-validation-for="Price" class="text-danger"></span>
     </div>
 
-        <!-- ✅ Discount input -->
+        <!-- Discount input -->
         <div class="my-2">
             <label>Discount (%)</label>
+            @* asp-for just table ar sathe akta connection and oi vlaue ta show kora  : asp-for diye just data binding*@
             <input type="number" class="form-control" asp-for="DiscountPercentage" min="0" max="100" />
+            @* asp-validation-for use kora hoy ai jonnno jodi usevul vabe kono data dey tahole seta user ke janate je tomar value wrong, jate user ke akta input dite pari  *@
             <span asp-validation-for="DiscountPercentage" class="text-danger"></span>
         </div>
 

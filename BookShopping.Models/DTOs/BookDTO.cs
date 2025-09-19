@@ -19,7 +19,7 @@ namespace BookShopping.Models.DTOs
         [Required]
         public double Price { get; set; }
 
-        // ✅ Discount property added
+        // Discount property added
         [Range(0, 100)]
         public double DiscountPercentage { get; set; } = 0;
 

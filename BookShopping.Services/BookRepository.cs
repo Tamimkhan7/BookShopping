@@ -26,7 +26,7 @@ namespace BookShopping.Services
                 existing.BookName = book.BookName;
                 existing.AuthorName = book.AuthorName;
                 existing.Price = book.Price;
-                existing.DiscountPercentage = book.DiscountPercentage; // ✅ Discount Update
+                existing.DiscountPercentage = book.DiscountPercentage; // Discount Update
                 existing.GenreId = book.GenreId;
                 existing.Image = book.Image;
             }

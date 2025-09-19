@@ -17,11 +17,11 @@
                     </div>
                     <div class="col-md-7">
                         <div class="card-body">
-                            <h2 class="card-title">@Model.BookName</h2>
+                            <h2 class="card-title fw-bold">@Model.BookName</h2>
                             <p><strong>Author:</strong> @Model.AuthorName</p>
                             <p><strong>Genre:</strong> @Model.Genre?.GenreName</p>
                             <p><strong>Price:</strong> $@Model.Price</p>
-                            <p><strong>Discount:</strong> @Model.DiscountPercentage %</p>
+                            <p class="text-success"><strong>Discount:</strong> @Model.DiscountPercentage %</p>
                             <p class="text-danger"><strong>Final Price:</strong> $@Model.DiscountedPrice</p>
 
                             <!-- Rating -->
@@ -54,7 +54,7 @@
             </div>
 
             <!-- Reviews Section -->
-            <h4>Reviews</h4>
+            <h4 class="fw-medium">Reviews</h4>
             @if (Model.Reviews != null && Model.Reviews.Any())
             {
                 foreach (var review in Model.Reviews)
@@ -64,8 +64,16 @@
                             <strong>⭐ @review.Rating</strong>
                             <small class="text-muted">@review.CreateAt.ToString("dd MMM yyyy")</small>
                         </div>
-                        <b>@review.User.UserName</b>
-                        <p class="mb-0"><em>@review.Comment</em></p>
+                        <span>
+                            <i class="bi bi-person-circle"></i>
+                            <b>@review.User.UserName</b>
+                        </span>
+                        <br />
+
+                        <span>
+                            <i class="bi bi-chat-left-text-fill"></i>
+                            <p class="mb-0"><em>@review.Comment</em></p>
+                        </span>
                     </div>
                 }
             }
@@ -92,7 +100,7 @@
                                 <p class="card-text mb-1"><strong>Author:</strong> @rb.AuthorName</p>
                                 <p class="card-text mb-1"><strong>Genre:</strong> @rb.GenreName</p>
                                 <p class="card-text mb-1"><strong>Price:</strong> $@rb.Price</p>
-                                <p class="card-text mb-1"><strong>Discount:</strong> @rb.DiscountPercentage %</p>
+                                <p class="card-text mb-1 text-success"><strong>Discount:</strong> @rb.DiscountPercentage %</p>
                                 <p class="card-text mb-1 text-danger"><strong>Final Price:</strong> $@rb.DiscountedPrice</p>
                                 <p class="card-text mb-1"><strong>Rating:</strong> @(rb.AverageRating.ToString("0.0"))</p>
 

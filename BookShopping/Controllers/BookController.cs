@@ -126,7 +126,7 @@ namespace BookShopping.Controllers
                 Price = book.Price,
                 DiscountPercentage = book.DiscountPercentage,  // ✅ Added
                 Image = book.Image,
-                GenreList = genreSelectList
+                GenreList = genreSelectList // genrelist hocce dropdown ar jonno option list
             };
             return View(bookToUpdate);
         }
