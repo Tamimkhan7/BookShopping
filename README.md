@@ -1,4 +1,4 @@
-# 🏋️‍♂️ GymNest
+# 🏋️‍♂️ BookStore
 
 **GymNest** is a modern ASP.NET Core web application designed to provide a comprehensive fitness and e-commerce platform. It integrates a secure authentication system, product management, payments, and Docker-based deployment for scalability and ease of use.
 
