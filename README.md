@@ -1,6 +1,6 @@
 # 🏋️‍♂️ BookStore
 
-**GymNest** is a modern ASP.NET Core web application designed to provide a comprehensive fitness and e-commerce platform. It integrates a secure authentication system, product management, payments, and Docker-based deployment for scalability and ease of use.
+**BookStore** is a modern ASP.NET Core web application designed to provide a comprehensive fitness and e-commerce platform. It integrates a secure authentication system, product management, payments, and Docker-based deployment for scalability and ease of use.
 
 ---
 
@@ -8,18 +8,21 @@
 
 ### **Authentication & User Management**
 - 🔐 **Login System**: Secure login for all users
-- 👥 **Role-Based Access Control (RBAC)**: Admin, Trainer, and Member roles
+- 👥 **Role-Based Access Control (RBAC)**: Admin and Member roles
 - ✉️ **Forgot Password**: Users can reset passwords via email using Google SMTP
 - ✅ **Email Verification**: Ensures users confirm their email before accessing sensitive features
 
 ### **Product Search & Management**
 - 🔍 **Search Bar**:
-  - By **Name**
-  - By **Price**
+  - By **Title**
+  - By **Author**
+  - By **best seller**
   - By **Genre**
-  - By **Rating**
+  - By **New Arrival**
+  - By **Top Rating**
   - Sort **Low → High Price**
   - Sort **Newest Products**
+  - Sort **Price Range**
 - 📄 **Product Details**:
   - Detailed product pages
   - Users can **write reviews** for each product
