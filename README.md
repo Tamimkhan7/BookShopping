@@ -21,6 +21,7 @@
   - By **New Arrival**
   - By **Top Rating**
   - Sort **Low → High Price**
+  - Sort **High → Low Price**
   - Sort **Newest Products**
   - Sort **Price Range**
 - 📄 **Product Details**:
